@@ -1,0 +1,28 @@
+To zadanie jest analogiczne do poprzedniego, z ta różnica, ze teraz w każdej probie testu program
+najpierw prezentuje naraz od 6 do 12 figur geometrycznych (kwadrat, kolo, trójkąt itp.)
+Znów, następnie wyświetlany jest czarny kwadrat zakrywający te figury.
+Na koniec, wyświetlane wcześniej figury prezentowane są ponownie.
+Tak jak poprzednio, program zaznacza czerwona kropka jedna z lokalizacji na ekranie
+(czasem robi to gdy jeszcze wyświetlany jest kwadrat, a czasem gdy kwadrat już zniknął).
+W połowie przypadków powtórzone figury są dokładnie takie same.
+W drugiej połowie przypadków figura w zaznaczonym kropką miejscu ulega zmianie na inna figurę.
+Twoim zadaniem jest zapamiętanie jakie figury były prezentowane, aby wykryć,
+czy zaznaczona kropka figura zmieniła się czy tez nie.
+
+Po powtórnej prezentacji figur musisz:
+
+• nacisnąć klawisz ←, wtedy gdy figura zaznaczona kropka została zmieniona przy powtórnej prezentacji albo
+• nacisnąć klawisz →, wtedy gdy figura zaznaczona kropka nie zmieniła się przed i po czarnym kwadracie.
+
+Program u dołu ekranu podpowie, jaka odpowiedz przypisana jest każdemu klawiszowi. Zapamiętaj reakcje:
+
+• klawisz ← – zaznaczona kropka figura się zmieniła (BYLA ZMIANA)
+• klawisz → – zaznaczona kropka figura się nie zmieniła (BRAK ZMIANY)
+
+Po wykonaniu przez Ciebie reakcji wyświetli się napis.
+Jeśli popełnisz błąd, zobaczysz napis „Odpowiedź niepoprawna”, a jeśli odpowiedz poprawnie,
+wyświetli się napis “Poprawna odpowiedź”.
+Naciskając ponownie dowolny klawisz reakcyjny (czyli ← albo →) przejdziesz do kolejnej próby.
+Teraz upewnij się, ze rozumiesz polecenie.
+Jeśli masz jakieś pytania, zadaj je teraz osobie prowadzącej badanie.
+Poczekaj na jej komendę, aby rozpocząć trening testu, złożony z kilkunastu prób.

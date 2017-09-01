@@ -1,0 +1,27 @@
+W każdej probie tego testu program najpierw prezentuje naraz od 6 do 12 symboli greckich (α, β itp.)
+Następnie, wyświetlany jest czarny kwadrat zakrywający te symbole.
+Na koniec, wyświetlane wcześniej symbole prezentowane są ponownie.
+Program zaznacza czerwona kropka jedna z lokalizacji na ekranie(czasem robi to gdy jeszcze wyświetlany jest kwadrat,
+a czasem gdy kwadrat już zniknął).
+W połowie przypadków powtórzone symbole są dokładnie takie same.
+W drugiej połowie przypadków symbol w zaznaczonym kropką miejscu ulega zmianie nainny symbol.
+Twoim zadaniem jest zapamiętanie jakie symbole były prezentowane, aby wykryć,
+czy zaznaczony kropka symbol zmienił się czy tez nie.
+
+Po powtórnej prezentacji symboli musisz:
+
+• Nacisnąć klawisz ←, wtedy gdy symbol zaznaczony kropka został zmieniony przy powtórnej prezentacji albo
+• Nacisnąć klawisz →, wtedy gdy symbol zaznaczony kropka nie zmienił się przed i po czarnym kwadracie.
+
+Program u dołu ekranu podpowie, jaka odpowiedz przypisana jest każdemu klawiszowi. Zapamiętaj reakcje:
+
+• klawisz ← – zaznaczony kropka symbol się zmienił (BYLA ZMIANA)
+• klawisz → – zaznaczona kropka symbol się nie zmienił (BRAK ZMIANY)
+
+Po wykonaniu przez Ciebie reakcji wyświetli się napis. Jeśli popełnisz błąd, zobaczysz napis „Odpowiedź niepoprawna”,
+a jeśli odpowiedz poprawnie, wyświetli się napis “Poprawna odpowiedź”. Naciskając ponownie dowolny klawisz reakcyjny
+(czyli ← albo →) przejdziesz do kolejnej próby.
+Teraz upewnij się, ze rozumiesz polecenie.
+Jeśli masz jakieś pytania, zadaj je teraz osobie prowadzącej badanie.
+
+Poczekaj na jej komendę, aby rozpocząć trening testu, złożony z kilkunastu prób.

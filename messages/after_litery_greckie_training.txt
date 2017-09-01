@@ -1,0 +1,11 @@
+Teraz nastąpi właściwa część testu, składająca się z 180 prób. Przypominamy, Twoim zadaniem jest zapamiętanie
+jakie symbole były prezentowane, aby wykryć, czy zaznaczony kropka symbol zmienił się czy tez nie.
+
+Po powtórnej prezentacji symboli (tj. po czarnym kwadracie) musisz:
+
+• nacisnąć klawisz ← (BYŁA ZMIANA), wtedy gdy symbol zaznaczony kropka został zmieniony przy powtórnej prezentacji albo
+• nacisnąć klawisz → (BRAK ZMIANY), wtedy gdy symbol zaznaczony kropka nie zmienił się przed i po czarnym kwadracie.
+
+Staraj się maksymalnie skupić podczas zadania i udzielać jak najbardziej poprawnych odpowiedzi.
+Tym razem program nie będzie już informować o poprawnośći Twoich reakcji.
+Jeśli rozumiesz polecenie i nie masz dodatkowych pytań, możesz rozpocząć test naciskając dowolny klawisz reakcyjny.

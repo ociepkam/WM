@@ -1,0 +1,11 @@
+Teraz nastąpi właściwa cześć testu, składająca się z 180 prób.
+Przypominamy, Twoim zadaniem jest zapamiętanie jakie figury były prezentowane,
+aby wykryć, czy zaznaczona kropka figura zmieniła się czy tez nie.
+Po powtórnej prezentacji figur (tj. po czarnym kwadracie) musisz:
+
+• nacisnąć klawisz ← (BYŁA ZMIANA), wtedy gdy figura zaznaczona kropka została zmieniona przy powtórnej prezentacji albo
+• nacisnąć klawisz → (BRAK ZMIANY), wtedy gdy figura zaznaczona kropka nie zmieniła się przed i po czarnym kwadracie.
+
+Staraj się maksymalnie skupić podczas zadania i udzielać jak najbardziej poprawnych odpowiedzi.
+Tym razem program nie będzie już informować o poprawności Twoich reakcji.
+Jeśli rozumiesz polecenie i nie masz dodatkowych pytań, możesz rozpocząć test naciskając dowolny klawisz reakcyjny.
