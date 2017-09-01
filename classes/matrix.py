@@ -7,7 +7,7 @@ from figure import Figure
 
 class Matrix:
     def __init__(self, elements, ftime, mtime, stime, feedb, wait, exp, unique=False, figure=1, colors=1, all=1):
-        self.size = 16
+        self.size = 9
         self.matrix = []
         self.matrix_changed = []
         self.unique = unique

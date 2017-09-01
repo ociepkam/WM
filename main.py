@@ -12,6 +12,7 @@ import yaml
 from psychopy import visual, core, event, logging, gui
 
 from concrete_experiment import concrete_experiment
+from classes.data import greek, figure_list
 from misc.screen_misc import get_screen_res, get_frame_rate
 
 # GLOBALS
@@ -187,7 +188,13 @@ def main():
 
     next_trial = visual.TextStim(win, text=u'Naci\u015Bnij dowolny klawisz reakcyjny', color='black', height=TEXT_SIZE,
                                  wrapWidth=TEXT_SIZE * 50)
+
     fixation_cross = visual.TextStim(win, text='+', color='black', height=2 * TEXT_SIZE, pos=(0, HEIGHT_OFFSET))
+
+    # answers
+    answers_list_greek = ["g{}.png".format(x) for x in greek]
+
+
     problem_number = 0
     for block in data['list_of_blocks']:
         if block['instruction_type'] != 'text':
@@ -203,6 +210,8 @@ def main():
 
             # prepare visualisation
             matrix = StimAggregator(win, trial['matrix'], fig_scale=FIGURES_SCALE)
+            random.shuffle(answers_list_greek)
+            answers_greek = StimAggregator(win, answers_list_greek, fig_scale=FIGURES_SCALE)
 
             sqrt_len = int(sqrt(len(trial['matrix'])))
             mask = visual.Rect(win, fillColor='black', lineColor='black', size=FIGURES_SCALE * 180 * sqrt_len,
@@ -225,7 +234,12 @@ def main():
             win.callOnFlip(response_clock.reset)
 
             # TODO: show answers matrix
-
+            event.Mouse(visible=True, newPos=None, win=win)
+            for _ in range(int(float(trial['STIME']) * FRAME_RATE)):  # show original matrix
+                answers_greek.draw()
+                check_exit()
+                win.flip()
+            event.Mouse(visible=False, newPos=None, win=win)
             # trial['ANS'] = keys[0] if keys else -1
             trial['ANS'] = -1
             # TODO: determine correctness
