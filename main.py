@@ -22,7 +22,7 @@ HEIGHT_OFFSET = 1.0 * VISUAL_OFFSET
 KEYS = ['left', 'right']
 RESULTS = list()
 RESULTS.append(
-    ['NR', 'FTIME', 'MTIME', 'STIME', 'CHANGE', 'ELEMENTS', 'ALL', 'UNIQUE', 'FIGURE', 'COLORS', 'FEATURES',
+    ['NR', 'FTIME', 'MTIME', 'STIME', 'ELEMENTS', 'ALL', 'UNIQUE', 'FIGURE', 'COLORS', 'FEATURES',
      'FEEDB', 'WAIT', 'EXP', 'LAT', 'ANS', 'ACC'])
 TRIGGER_LIST = []
 

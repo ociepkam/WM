@@ -1486,3 +1486,204 @@
 21.4515 	DATA 	Keypress: right
 21.9526 	DATA 	Keypress: f7
 21.9527 	CRITICAL 	Experiment finished by user! f7 pressed.
+2.3352 	INFO 	Loaded calibration from:2015_04_13 10:20
+2.3352 	INFO 	['2015_04_13 10:20']
+2.3358 	INFO 	configured pyglet screen 0
+2.5585 	INFO 	Using gamma table of operating system
+3.6245 	INFO 	Detected framerate: 60 frames per sec.
+1.8861 	INFO 	Loaded calibration from:2015_04_13 10:20
+1.8861 	INFO 	['2015_04_13 10:20']
+1.8866 	INFO 	configured pyglet screen 0
+2.1578 	INFO 	Using gamma table of operating system
+3.2183 	INFO 	Detected framerate: 60 frames per sec.
+3.5846 	EXP 	TextStim: autoLog = None
+3.5846 	EXP 	TextStim: units = None
+3.5846 	EXP 	TextStim: useShaders = None
+3.5846 	EXP 	TextStim: depth = None
+3.5846 	EXP 	TextStim: ori = None
+3.5846 	EXP 	TextStim: pos = None
+3.5846 	EXP 	TextStim: colorSpace = None
+3.5846 	EXP 	TextStim: opacity = None
+3.5846 	EXP 	TextStim: contrast = None
+3.5846 	EXP 	TextStim: autoLog = None
+3.5846 	EXP 	TextStim: units = None
+3.5846 	EXP 	TextStim: useShaders = None
+3.5846 	EXP 	TextStim: depth = None
+3.5846 	EXP 	TextStim: ori = None
+3.5846 	EXP 	TextStim: pos = None
+3.5846 	EXP 	TextStim: colorSpace = None
+3.5846 	EXP 	TextStim: opacity = None
+3.5846 	EXP 	TextStim: contrast = None
+3.5846 	EXP 	TextStim: autoLog = None
+3.5846 	EXP 	TextStim: units = None
+3.5846 	EXP 	TextStim: useShaders = None
+3.5846 	EXP 	TextStim: depth = None
+3.5846 	EXP 	TextStim: ori = None
+3.5846 	EXP 	TextStim: pos = None
+3.5846 	EXP 	TextStim: colorSpace = None
+3.5846 	EXP 	TextStim: opacity = None
+3.5846 	EXP 	TextStim: contrast = None
+4.6029 	DATA 	Keypress: space
+4.6030 	DATA 	Key pressed: space
+4.6344 	EXP 	ImageStim: autoLog = None
+4.6344 	EXP 	ImageStim: units = None
+4.6344 	EXP 	ImageStim: useShaders = None
+4.6344 	EXP 	ImageStim: size = None
+4.6344 	EXP 	ImageStim: pos = None
+4.6344 	EXP 	ImageStim: ori = None
+4.6344 	EXP 	ImageStim: depth = None
+4.6344 	EXP 	ImageStim: contrast = None
+4.6344 	EXP 	ImageStim: opacity = None
+4.6344 	EXP 	ImageStim: autoLog = None
+4.6344 	EXP 	ImageStim: units = None
+4.6344 	EXP 	ImageStim: useShaders = None
+4.6344 	EXP 	ImageStim: size = None
+4.6344 	EXP 	ImageStim: pos = None
+4.6344 	EXP 	ImageStim: ori = None
+4.6344 	EXP 	ImageStim: depth = None
+4.6344 	EXP 	ImageStim: contrast = None
+4.6344 	EXP 	ImageStim: opacity = None
+4.6344 	EXP 	ImageStim: autoLog = None
+4.6344 	EXP 	ImageStim: units = None
+4.6344 	EXP 	ImageStim: useShaders = None
+4.6344 	EXP 	ImageStim: size = None
+4.6344 	EXP 	ImageStim: pos = None
+4.6344 	EXP 	ImageStim: ori = None
+4.6344 	EXP 	ImageStim: depth = None
+4.6344 	EXP 	ImageStim: contrast = None
+4.6344 	EXP 	ImageStim: opacity = None
+4.6344 	EXP 	Rect: autoLog = None
+4.6344 	EXP 	Rect: units = None
+4.6344 	EXP 	Rect: contrast = None
+4.6344 	EXP 	Rect: opacity = None
+4.6344 	EXP 	Rect: pos = None
+4.6344 	EXP 	Rect: useShaders = None
+4.6344 	EXP 	Rect: depth = None
+4.6344 	EXP 	Rect: ori = None
+4.6344 	EXP 	Rect: size = None
+4.6344 	EXP 	Rect: size = None
+9.9626 	DATA 	Keypress: left
+9.9627 	DATA 	Key pressed: left
+1.8288 	INFO 	Loaded calibration from:2015_04_13 10:20
+1.8288 	INFO 	['2015_04_13 10:20']
+1.8294 	INFO 	configured pyglet screen 0
+2.0950 	INFO 	Using gamma table of operating system
+3.1655 	INFO 	Detected framerate: 60 frames per sec.
+3.5483 	EXP 	TextStim: autoLog = None
+3.5483 	EXP 	TextStim: units = None
+3.5483 	EXP 	TextStim: useShaders = None
+3.5483 	EXP 	TextStim: depth = None
+3.5483 	EXP 	TextStim: ori = None
+3.5483 	EXP 	TextStim: pos = None
+3.5483 	EXP 	TextStim: colorSpace = None
+3.5483 	EXP 	TextStim: opacity = None
+3.5483 	EXP 	TextStim: contrast = None
+3.5483 	EXP 	TextStim: autoLog = None
+3.5483 	EXP 	TextStim: units = None
+3.5483 	EXP 	TextStim: useShaders = None
+3.5483 	EXP 	TextStim: depth = None
+3.5483 	EXP 	TextStim: ori = None
+3.5483 	EXP 	TextStim: pos = None
+3.5483 	EXP 	TextStim: colorSpace = None
+3.5483 	EXP 	TextStim: opacity = None
+3.5483 	EXP 	TextStim: contrast = None
+3.5483 	EXP 	TextStim: autoLog = None
+3.5483 	EXP 	TextStim: units = None
+3.5483 	EXP 	TextStim: useShaders = None
+3.5483 	EXP 	TextStim: depth = None
+3.5483 	EXP 	TextStim: ori = None
+3.5483 	EXP 	TextStim: pos = None
+3.5483 	EXP 	TextStim: colorSpace = None
+3.5483 	EXP 	TextStim: opacity = None
+3.5483 	EXP 	TextStim: contrast = None
+4.8996 	DATA 	Keypress: space
+4.8996 	DATA 	Key pressed: space
+4.9318 	EXP 	ImageStim: autoLog = None
+4.9318 	EXP 	ImageStim: units = None
+4.9318 	EXP 	ImageStim: useShaders = None
+4.9318 	EXP 	ImageStim: size = None
+4.9318 	EXP 	ImageStim: pos = None
+4.9318 	EXP 	ImageStim: ori = None
+4.9318 	EXP 	ImageStim: depth = None
+4.9318 	EXP 	ImageStim: contrast = None
+4.9318 	EXP 	ImageStim: opacity = None
+4.9318 	EXP 	ImageStim: autoLog = None
+4.9318 	EXP 	ImageStim: units = None
+4.9318 	EXP 	ImageStim: useShaders = None
+4.9318 	EXP 	ImageStim: size = None
+4.9318 	EXP 	ImageStim: pos = None
+4.9318 	EXP 	ImageStim: ori = None
+4.9318 	EXP 	ImageStim: depth = None
+4.9318 	EXP 	ImageStim: contrast = None
+4.9318 	EXP 	ImageStim: opacity = None
+4.9318 	EXP 	ImageStim: autoLog = None
+4.9318 	EXP 	ImageStim: units = None
+4.9318 	EXP 	ImageStim: useShaders = None
+4.9318 	EXP 	ImageStim: size = None
+4.9318 	EXP 	ImageStim: pos = None
+4.9318 	EXP 	ImageStim: ori = None
+4.9318 	EXP 	ImageStim: depth = None
+4.9318 	EXP 	ImageStim: contrast = None
+4.9318 	EXP 	ImageStim: opacity = None
+4.9318 	EXP 	Rect: autoLog = None
+4.9318 	EXP 	Rect: units = None
+4.9318 	EXP 	Rect: contrast = None
+4.9318 	EXP 	Rect: opacity = None
+4.9318 	EXP 	Rect: pos = None
+4.9318 	EXP 	Rect: useShaders = None
+4.9318 	EXP 	Rect: depth = None
+4.9318 	EXP 	Rect: ori = None
+4.9318 	EXP 	Rect: size = None
+4.9318 	EXP 	Rect: size = None
+9.6193 	DATA 	Keypress: left
+9.6193 	DATA 	Key pressed: left
+9.6313 	EXP 	ImageStim: autoLog = None
+9.6313 	EXP 	ImageStim: units = None
+9.6313 	EXP 	ImageStim: useShaders = None
+9.6313 	EXP 	ImageStim: size = None
+9.6313 	EXP 	ImageStim: pos = None
+9.6313 	EXP 	ImageStim: ori = None
+9.6313 	EXP 	ImageStim: depth = None
+9.6313 	EXP 	ImageStim: contrast = None
+9.6313 	EXP 	ImageStim: opacity = None
+9.6313 	EXP 	ImageStim: autoLog = None
+9.6313 	EXP 	ImageStim: units = None
+9.6313 	EXP 	ImageStim: useShaders = None
+9.6313 	EXP 	ImageStim: size = None
+9.6313 	EXP 	ImageStim: pos = None
+9.6313 	EXP 	ImageStim: ori = None
+9.6313 	EXP 	ImageStim: depth = None
+9.6313 	EXP 	ImageStim: contrast = None
+9.6313 	EXP 	ImageStim: opacity = None
+9.6313 	EXP 	ImageStim: autoLog = None
+9.6313 	EXP 	ImageStim: units = None
+9.6313 	EXP 	ImageStim: useShaders = None
+9.6313 	EXP 	ImageStim: size = None
+9.6313 	EXP 	ImageStim: pos = None
+9.6313 	EXP 	ImageStim: ori = None
+9.6313 	EXP 	ImageStim: depth = None
+9.6313 	EXP 	ImageStim: contrast = None
+9.6313 	EXP 	ImageStim: opacity = None
+9.6313 	EXP 	ImageStim: autoLog = None
+9.6313 	EXP 	ImageStim: units = None
+9.6313 	EXP 	ImageStim: useShaders = None
+9.6313 	EXP 	ImageStim: size = None
+9.6313 	EXP 	ImageStim: pos = None
+9.6313 	EXP 	ImageStim: ori = None
+9.6313 	EXP 	ImageStim: depth = None
+9.6313 	EXP 	ImageStim: contrast = None
+9.6313 	EXP 	ImageStim: opacity = None
+9.6313 	EXP 	Rect: autoLog = None
+9.6313 	EXP 	Rect: units = None
+9.6313 	EXP 	Rect: contrast = None
+9.6313 	EXP 	Rect: opacity = None
+9.6313 	EXP 	Rect: pos = None
+9.6313 	EXP 	Rect: useShaders = None
+9.6313 	EXP 	Rect: depth = None
+9.6313 	EXP 	Rect: ori = None
+9.6313 	EXP 	Rect: size = None
+9.6313 	EXP 	Rect: size = None
+14.1632 	DATA 	Keypress: f7
+15.7952 	DATA 	Keypress: left
+15.7952 	DATA 	Key pressed: left
+15.8052 	CRITICAL 	Experiment finished by user! f7 pressed.

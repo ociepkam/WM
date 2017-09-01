@@ -82,10 +82,9 @@ def concrete_experiment(participant_id, participant_sex, participant_age, file_n
         else:
             matrix = Matrix(elements=trial_info['elements'], ftime=trial_info['ftime'], mtime=trial_info['mtime'],
                             stime=trial_info['stime'], feedb=trial_info['feedb'], wait=trial_info['wait'],
-                            exp=trial_info['trial_type'], change=trial_info['change'], unique=trial_info['unique'],
-                            figure=trial_info['figure'], colors=trial_info['colors'], all=trial_info['all'])
+                            exp=trial_info['trial_type'], unique=trial_info['unique'], figure=trial_info['figure'],
+                            colors=trial_info['colors'], all=trial_info['all'])
 
-            matrix.convert_matrix()
             experiment.list_of_blocks[block_number - 1].list_of_matrix.append(matrix)
 
     if random:

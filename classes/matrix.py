@@ -6,12 +6,10 @@ from figure import Figure
 
 
 class Matrix:
-    def __init__(self, elements, ftime, mtime, stime, feedb, wait, exp,
-                 change=2, unique=False, figure=1, colors=1, all=1):
+    def __init__(self, elements, ftime, mtime, stime, feedb, wait, exp, unique=False, figure=1, colors=1, all=1):
         self.size = 16
         self.matrix = []
         self.matrix_changed = []
-        self.change = change
         self.unique = unique
         self.figure = figure
         self.colors = colors
@@ -77,32 +75,6 @@ class Matrix:
 
         self.matrix[random.choice(free)] = Figure(fig)
 
-    def convert_matrix(self):
-        self.matrix_changed = deepcopy(self.matrix)
-        if self.change == 1:
-            fig_idx = []
-            for i in range(self.size):
-                if self.matrix_changed[i] is not None:
-                    fig_idx.append(i)
-
-            change_idx_1 = random.choice(fig_idx)
-            fig_idx.remove(change_idx_1)
-            change_idx_2 = random.choice(fig_idx)
-            self.matrix_changed[change_idx_1], self.matrix_changed[change_idx_2] = \
-                self.matrix_changed[change_idx_2], self.matrix_changed[change_idx_1]
-        elif self.change == 2:
-            fig_idx = []
-            for i in range(self.size):
-                if self.matrix[i] is not None:
-                    fig_idx.append(i)
-            while True:
-                self.matrix_changed = deepcopy(self.matrix)
-                self.matrix_changed[random.choice(fig_idx)].change(self.figure, self.colors, self.matrix_changed,
-                                                                   self.all)
-                if len([figure.parameters for figure in self.matrix_changed if figure is not None]) == \
-                   len(set([figure.parameters for figure in self.matrix_changed if figure is not None])):
-                    break
-
     def info(self):
         list_of_figures_info = []
         for fig in self.matrix:
@@ -122,7 +94,6 @@ class Matrix:
             "size": self.size,
             "matrix": list_of_figures_info,
             "matrix_changed": list_of_figures_info_2,
-            "change": self.change,
             "unique": self.unique,
             "figure": self.figure,
             "colors": self.colors,
