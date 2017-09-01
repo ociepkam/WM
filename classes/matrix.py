@@ -6,8 +6,8 @@ from figure import Figure
 
 
 class Matrix:
-    def __init__(self, elements, ftime, mtime, stime, maxtime, var, shint, ehint,
-                 feedb, wait, exp, change=2, unique=False, figure=1, colors=1, all=1):
+    def __init__(self, elements, ftime, mtime, stime, feedb, wait, exp,
+                 change=2, unique=False, figure=1, colors=1, all=1):
         self.size = 16
         self.matrix = []
         self.matrix_changed = []
@@ -21,10 +21,6 @@ class Matrix:
         self.exp = exp
         self.WAIT = wait
         self.FEEDB = feedb
-        self.EHINT = ehint
-        self.SHINT = shint
-        self.VAR = var
-        self.MAXTIME = maxtime
         self.STIME = stime
         self.MTIME = mtime
         self.FTIME = ftime
@@ -135,10 +131,6 @@ class Matrix:
             "EXP": self.exp,
             "WAIT": self.WAIT,
             "FEEDB": self.FEEDB,
-            "EHINT": self.EHINT,
-            "SHINT": self.SHINT,
-            "VAR": self.VAR,
-            "MAXTIME": self.MAXTIME,
             "STIME": self.STIME,
             "MTIME": self.MTIME,
             "FTIME": self.FTIME,

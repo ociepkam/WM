@@ -20,11 +20,10 @@ VISUAL_OFFSET = 90
 FIGURES_SCALE = 0.5
 HEIGHT_OFFSET = 1.0 * VISUAL_OFFSET
 KEYS = ['left', 'right']
-LABELS = ['Brak zmiany', 'Byla zmiana']
 RESULTS = list()
 RESULTS.append(
-    ['NR', 'FTIME', 'MTIME', 'STIME', 'MAXTIME', 'CHANGE', 'ELEMENTS', 'ALL', 'UNIQUE', 'FIGURE', 'COLORS', 'FEATURES',
-     'VAR', 'SHINT', 'EHINT', 'FEEDB', 'WAIT', 'EXP', 'LAT', 'ANS', 'ACC'])
+    ['NR', 'FTIME', 'MTIME', 'STIME', 'CHANGE', 'ELEMENTS', 'ALL', 'UNIQUE', 'FIGURE', 'COLORS', 'FEATURES',
+     'FEEDB', 'WAIT', 'EXP', 'LAT', 'ANS', 'ACC'])
 TRIGGER_LIST = []
 
 
@@ -157,21 +156,6 @@ class StimAggregator(object):
             item.setAutoDraw(draw)
 
 
-def determine_hint_pos(first_matrix, sec_matrix, change, fig_scale, offsets):
-    sqrt_len = int(sqrt(len(first_matrix)))
-    if change == 0:  # hint on random stimulus
-        stim_idx = first_matrix.index(random.choice([x for x in first_matrix if x is not None]))
-    elif change == 1:  # two stims place swapping
-        stim_idx = random.choice([idx for idx, (x, y) in enumerate(zip(first_matrix, sec_matrix)) if x != y])
-    else:  # change == 2 One stimuli has changed
-        stim_idx = [idx for idx, (x, y) in enumerate(zip(first_matrix, sec_matrix)) if x != y][0]
-    width_offset, height_offset = offsets
-    center_shift = (0.5 * VISUAL_OFFSET * fig_scale)  # shift to center of square
-    hint_x = (width_offset + (stim_idx % sqrt_len)) * (VISUAL_OFFSET * fig_scale) + center_shift
-    hint_y = (height_offset + (int(stim_idx) / sqrt_len)) * (VISUAL_OFFSET * fig_scale) + center_shift + HEIGHT_OFFSET
-    return hint_x, hint_y
-
-
 class IntervalTimer(object):
     def __init__(self, start, stop):
         self._start_timer = core.CountdownTimer(float(start))
@@ -200,9 +184,7 @@ def main():
                         file_name="experiment")
     data = yaml.load(open(join('data', PART_ID + '.yaml')))
     response_clock = core.Clock()
-    pos_feedb = visual.TextStim(win, text=u'Poprawna odpowied\u017A', color='black', height=TEXT_SIZE)
-    neg_feedb = visual.TextStim(win, text=u'Odpowied\u017A niepoprawna', color='black', height=TEXT_SIZE)
-    no_feedb = visual.TextStim(win, text=u'Nie udzieli\u0142e\u015B odpowiedzi', color='black', height=TEXT_SIZE)
+
     next_trial = visual.TextStim(win, text=u'Naci\u015Bnij dowolny klawisz reakcyjny', color='black', height=TEXT_SIZE,
                                  wrapWidth=TEXT_SIZE * 50)
     fixation_cross = visual.TextStim(win, text='+', color='black', height=2 * TEXT_SIZE, pos=(0, HEIGHT_OFFSET))
@@ -213,9 +195,7 @@ def main():
         show_info(win, join('messages', block['instruction']))
         for trial in block['list_of_matrix']:
             trial = CaseInsensitiveDict(trial)
-            # should already be in config!
-            response_time = trial['MAXTIME'] - trial['STIME']
-            trial['RESPTIME'] = response_time if response_time > 0.0 else 0
+
             trial['FEEDBTIME'] = 2
             trial['NR'] = problem_number
             trial['features'] = trial['figure'] + trial['colors']
@@ -223,17 +203,10 @@ def main():
 
             # prepare visualisation
             matrix = StimAggregator(win, trial['matrix'], fig_scale=FIGURES_SCALE)
-            matrix_changed = StimAggregator(win, trial['matrix_changed'], fig_scale=FIGURES_SCALE)
-            hint_pos = determine_hint_pos(trial['matrix'], trial['matrix_changed'], trial['change'], FIGURES_SCALE,
-                                          matrix.get_offsets())
-            hint = visual.Circle(win, fillColor='crimson', size=10, pos=hint_pos, lineColor='white')
+
             sqrt_len = int(sqrt(len(trial['matrix'])))
             mask = visual.Rect(win, fillColor='black', lineColor='black', size=FIGURES_SCALE * 180 * sqrt_len,
                                pos=(0, HEIGHT_OFFSET))
-            left_label = visual.TextStim(win, text=LABELS[0], color='black', height=TEXT_SIZE,
-                                         pos=(-2.5 * VISUAL_OFFSET, -2 * VISUAL_OFFSET))
-            right_label = visual.TextStim(win, text=LABELS[1], color='black', height=TEXT_SIZE,
-                                          pos=(2.5 * VISUAL_OFFSET, -2 * VISUAL_OFFSET))
 
             for _ in range(int(0.5 * FRAME_RATE)):  # fixation cross
                 fixation_cross.draw()
@@ -243,63 +216,22 @@ def main():
                 matrix.draw()
                 check_exit()
                 win.flip()
-            hint_timer = IntervalTimer(trial['SHINT'], trial['EHINT'])  # start hint display timer
+
             for _ in range(int(float(trial['MTIME']) * FRAME_RATE)):  # show mask
                 mask.draw()
-                if hint_timer.in_interval():
-                    hint.draw()
                 check_exit()
                 win.flip()
             event.clearEvents()
             win.callOnFlip(response_clock.reset)
-            left_label.setAutoDraw(True)
-            right_label.setAutoDraw(True)
-            for _ in range(int(float(trial['STIME']) * FRAME_RATE)):  # show changed matrix
-                matrix_changed.draw()
-                check_exit()
-                if hint_timer.in_interval():
-                    hint.draw()
-                win.flip()
-                keys = event.getKeys(keyList=KEYS)
-                if keys:
-                    trial['LAT'] = response_clock.getTime()
-                    break
-            if trial['LAT'] is None:  # wait a little more for ans
-                for _ in range(int(float(trial['RESPTIME']) * FRAME_RATE)):
-                    check_exit()
-                    if hint_timer.in_interval():
-                        hint.draw()
-                    win.flip()
-                    keys = event.getKeys(keyList=KEYS)
-                    if keys:
-                        trial['LAT'] = response_clock.getTime()
-                        break
 
-            left_label.setAutoDraw(False)
-            right_label.setAutoDraw(False)
-            trial['ANS'] = keys[0] if keys else -1
+            # TODO: show answers matrix
 
-            if keys:  # determine correctness
-                change = bool(trial['change'])
-                change_detected = trial['ANS'] == KEYS[1]
-                if change == change_detected:
-                    trial['ACC'] = 1
-                else:
-                    trial['ACC'] = 0
-            else:
-                trial['ACC'] = -1
-            problem_number += 1
-            if trial['FEEDB'] == 1:  # show feedback
-                if trial['ACC'] == 1:
-                    feedb_msg = pos_feedb
-                elif trial['ACC'] == 0:
-                    feedb_msg = neg_feedb
-                else:
-                    feedb_msg = no_feedb
-                for _ in range(int(float(trial['FEEDBTIME']) * FRAME_RATE)):
-                    feedb_msg.draw()
-                    check_exit()
-                    win.flip()
+            # trial['ANS'] = keys[0] if keys else -1
+            trial['ANS'] = -1
+            # TODO: determine correctness
+            trial['ACC'] = -1
+            # TODO: show feedback
+
             if trial['WAIT'] == 0:
                 next_trial.draw()
                 win.flip()
