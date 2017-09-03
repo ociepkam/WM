@@ -8,6 +8,7 @@ import random
 import copy
 from os.path import join
 from math import sqrt
+import time
 
 import yaml
 from psychopy import visual, core, event, logging, gui
@@ -21,11 +22,10 @@ TEXT_SIZE = 30
 VISUAL_OFFSET = 90
 FIGURES_SCALE = 0.5
 HEIGHT_OFFSET = 1.0 * VISUAL_OFFSET
-KEYS = ['left', 'right']
 RESULTS = list()
 RESULTS.append(
     ['NR', 'FTIME', 'MTIME', 'STIME', 'ELEMENTS', 'ALL', 'UNIQUE', 'FIGURE', 'COLORS', 'FEATURES',
-     'FEEDB', 'WAIT', 'EXP', 'LAT', 'ANS', 'ACC'])
+     'FEEDB', 'WAIT', 'EXP', 'LAT', 'TRUE_ANS', 'ANS', 'ACC'])
 TRIGGER_LIST = []
 
 
@@ -101,7 +101,7 @@ def show_info(win, file_name, insert=''):
     msg = visual.TextStim(win, color='black', text=msg, height=TEXT_SIZE - 10, wrapWidth=SCREEN_RES['width'])
     msg.draw()
     win.flip()
-    key = event.waitKeys(keyList=['f7', 'return', 'space', 'left', 'right'] + KEYS)
+    key = event.waitKeys(keyList=['f7', 'return', 'space'])
     if key == ['f7']:
         abort_with_error('Experiment finished by user on info screen! F7 pressed.')
     win.flip()
@@ -226,7 +226,7 @@ def main():
     data = yaml.load(open(join('data', PART_ID + '.yaml')))
     response_clock = core.Clock()
 
-    next_trial = visual.TextStim(win, text=u'Naci\u015Bnij dowolny klawisz reakcyjny', color='black', height=TEXT_SIZE,
+    next_trial = visual.TextStim(win, text=u'Naci\u015Bnij spacj\u0119 aby kontynuowa\u0107', color='black', height=TEXT_SIZE,
                                  wrapWidth=TEXT_SIZE * 50)
 
     fixation_cross = visual.TextStim(win, text='+', color='black', height=2 * TEXT_SIZE)
@@ -241,7 +241,7 @@ def main():
         show_info(win, join('messages', block['instruction']))
         for trial in block['list_of_matrix']:
             trial = CaseInsensitiveDict(trial)
-            trial_stims = [elem for elem in trial['matrix'] if elem is not None]
+            trial['TRUE_ANS'] = [elem for elem in trial['matrix'] if elem is not None]
 
             trial['FEEDBTIME'] = 2
             trial['NR'] = problem_number
@@ -272,7 +272,7 @@ def main():
                 win.flip()
             event.clearEvents()
             win.callOnFlip(response_clock.reset)
-            # TODO: show answers matrix
+
             event.Mouse(visible=True, newPos=None, win=win)
             answers_greek.setAutoDrawStims(True)
             pressed = False
@@ -283,7 +283,7 @@ def main():
                     for idx, pos in enumerate(answers_greek.get_grid()):
                         if mouse.isPressedIn(pos):
                             if not answers_greek.get_elem_status(pos):
-                                if len(answers_greek.get_marked_items_names()) < len(trial_stims):
+                                if len(answers_greek.get_marked_items_names()) < len(trial['TRUE_ANS']):
                                     answers_greek.changeDrawGridElem(pos)
                             else:
                                 answers_greek.changeDrawGridElem(pos)
@@ -291,23 +291,32 @@ def main():
 
                 check_exit()
                 win.flip()
-            print answers_greek.get_marked_items_names()
+
+            trial['ANS'] = answers_greek.get_marked_items_names()
+
             event.Mouse(visible=False, newPos=None, win=win)
             answers_greek.setAutoDrawStims(False)
             answers_greek.setAutoDrawGrid(False)
             win.flip()
-            check_exit()
 
-            trial['ANS'] = -1
+            trial['ACC'] = len([elem for elem in trial['ANS'] if elem in trial['TRUE_ANS']]) / float(len(trial['TRUE_ANS']))
 
-            # TODO: determine correctness
-            trial['ACC'] = -1
             # TODO: show feedback
+            check_exit()
+            if trial['FEEDB']:
+                acc = round(trial['ACC']*100, 2)
+                feedb = visual.TextStim(win, text=u'Poprawno\u015B\u0107: {}%'.format(acc), color='black', height=TEXT_SIZE,
+                                        wrapWidth=TEXT_SIZE * 50)
+                feedb.setAutoDraw(True)
+                win.flip()
+                time.sleep(1)
+                feedb.setAutoDraw(False)
+                win.flip()
 
             if trial['WAIT'] == 0:
                 next_trial.draw()
                 win.flip()
-                event.waitKeys(keyList=KEYS)
+                event.waitKeys(keyList=['space'])
             else:
                 jitter = int(FRAME_RATE)
                 jitter = random.choice(range(-jitter, jitter))

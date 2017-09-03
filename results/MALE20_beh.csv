@@ -1,3 +1,5 @@
-NR,FTIME,MTIME,STIME,ELEMENTS,ALL,UNIQUE,FIGURE,COLORS,FEATURES,FEEDB,WAIT,EXP,LAT,ANS,ACC
-0,2,1.5,4,4,1,1,-1,-1,-2,1,0,training,,-1,-1
-0,2,1.5,4,5,1,1,-1,-1,-2,1,0,training,,-1,-1
+NR,FTIME,MTIME,STIME,ELEMENTS,ALL,UNIQUE,FIGURE,COLORS,FEATURES,FEEDB,WAIT,EXP,LAT,TRUE_ANS,ANS,ACC
+0,2,1.5,4,4,1,1,-1,-1,-2,1,0,training,,"['g10.png', 'g7.png', 'g13.png', 'g12.png']","['g7.png', 'g13.png', 'g10.png']",0.75
+0,2,1.5,4,5,1,1,-1,-1,-2,1,0,training,,"['g12.png', 'g11.png', 'g10.png', 'g5.png', 'g8.png']","['g5.png', 'g9.png', 'g13.png', 'g11.png', 'g10.png']",0.6
+0,2,1.5,4,5,1,1,-1,-1,-2,1,0,training,,"['g12.png', 'g7.png', 'g11.png', 'g6.png', 'g13.png']","['g12.png', 'g11.png', 'g6.png', 'g10.png']",0.6
+0,2,1.5,4,3,1,1,-1,-1,-2,1,0,training,,"['g7.png', 'g11.png', 'g8.png']","['g7.png', 'g11.png']",0.6666666666666666
