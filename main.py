@@ -5,6 +5,7 @@ import codecs
 import collections
 import csv
 import random
+import copy
 from os.path import join
 from math import sqrt
 
@@ -115,6 +116,8 @@ class StimAggregator(object):
     def __init__(self, win, matrix, fig_scale=1.0, show_grid=False):
         self._stims_matrix = list()
         self._grid_matrix = list()
+        self._items_names = list()
+        self._pos = list()
         sqrt_len = sqrt(len(matrix))
         if not sqrt_len.is_integer():
             abort_with_error('Illegal matrix shape n = {}'.format(len(matrix)))
@@ -125,36 +128,72 @@ class StimAggregator(object):
         # Figure matrix must be centered.
         center_shift = (0.5 * VISUAL_OFFSET * fig_scale)  # shift to center of square
         width = self.width_offset * VISUAL_OFFSET * fig_scale + center_shift
-        height = self.height_offset * VISUAL_OFFSET * fig_scale + center_shift + HEIGHT_OFFSET
+        height = self.height_offset * VISUAL_OFFSET * fig_scale + center_shift #+ HEIGHT_OFFSET
         for row in matrix:
             for item in row:
-                if item is not None:
+                if isinstance(item, str):
+                    self._items_names.append(item)
                     item = visual.ImageStim(win=win, image=join('images', 'all_png', item), interpolate=True,
                                             size=90 * fig_scale, pos=(width, height))
                     self._stims_matrix.append(item)
-                if show_grid:
-                    square = visual.Rect(win=win, lineColor='black', size=180 * fig_scale, pos=(width, height))
-                    self._grid_matrix.append(square)
+                elif isinstance(item, visual.rect.Rect):
+                    item.setPos((width, height))
+                    self._stims_matrix.append(copy.copy(item))
+
+                square = visual.Rect(win=win, lineColor='green', size=180 * fig_scale, pos=(width, height), lineWidth=5)
+                self._grid_matrix.append(square)
                 width += VISUAL_OFFSET * fig_scale
             height += VISUAL_OFFSET * fig_scale
             width = self.width_offset * VISUAL_OFFSET * fig_scale + center_shift
+            self._pos.append((width, height))
 
     def get_offsets(self):
         return self.width_offset, self.height_offset
 
-    def draw(self):
+    def get_positions(self):
+        return self._pos
+
+    def get_grid(self):
+        return self._grid_matrix
+
+    def get_marked_items_names(self):
+        names = list()
+        for idx, elem in enumerate(self._grid_matrix):
+            if elem.__dict__['autoDraw']:
+                names.append(self._items_names[idx])
+        return names
+
+    def get_elem_status(self, elem):
+        return elem.__dict__['autoDraw']
+
+    def drawStims(self):
         for item in self._stims_matrix:
             item.draw()
+
+    def drawGrid(self):
         for item in self._grid_matrix:
             item.draw()
 
-    def setAutoDraw(self, draw):
+    def setAutoDrawStims(self, draw):
         if not isinstance(draw, bool):
-            abort_with_error('Aggregator.setAutoDraw can handle only boolean, got {} instead.'.format(type(draw)))
+            abort_with_error('Aggregator.setAutoDrawStims can handle only boolean, got {} instead.'.format(type(draw)))
         for item in self._stims_matrix:
             item.setAutoDraw(draw)
+
+    def setAutoDrawGrid(self, draw):
+        if not isinstance(draw, bool):
+            abort_with_error(
+                'Aggregator.setAutoDrawGrid can handle only boolean, got {} instead.'.format(type(draw)))
         for item in self._grid_matrix:
             item.setAutoDraw(draw)
+
+    def changeDrawGridElem(self, elem):
+        if self.get_elem_status(elem):
+            elem.setAutoDraw(False)
+            return False
+        else:
+            elem.setAutoDraw(True)
+            return True
 
 
 class IntervalTimer(object):
@@ -178,6 +217,7 @@ def main():
     logging.LogFile('results/' + PART_ID + '.log', level=logging.INFO)
     win = visual.Window(SCREEN_RES.values(), fullscr=True, monitor='testMonitor', units='pix', screen=0,
                         color='Gainsboro')
+    mouse = event.Mouse()
     event.Mouse(visible=False, newPos=None, win=win)
     FRAME_RATE = get_frame_rate(win)
     concrete_experiment(participant_age=info['Part_age'], participant_id=info['Part_id'],
@@ -189,11 +229,10 @@ def main():
     next_trial = visual.TextStim(win, text=u'Naci\u015Bnij dowolny klawisz reakcyjny', color='black', height=TEXT_SIZE,
                                  wrapWidth=TEXT_SIZE * 50)
 
-    fixation_cross = visual.TextStim(win, text='+', color='black', height=2 * TEXT_SIZE, pos=(0, HEIGHT_OFFSET))
+    fixation_cross = visual.TextStim(win, text='+', color='black', height=2 * TEXT_SIZE)
 
     # answers
     answers_list_greek = ["g{}.png".format(x) for x in greek]
-
 
     problem_number = 0
     for block in data['list_of_blocks']:
@@ -202,6 +241,7 @@ def main():
         show_info(win, join('messages', block['instruction']))
         for trial in block['list_of_matrix']:
             trial = CaseInsensitiveDict(trial)
+            trial_stims = [elem for elem in trial['matrix'] if elem is not None]
 
             trial['FEEDBTIME'] = 2
             trial['NR'] = problem_number
@@ -214,15 +254,15 @@ def main():
             answers_greek = StimAggregator(win, answers_list_greek, fig_scale=FIGURES_SCALE)
 
             sqrt_len = int(sqrt(len(trial['matrix'])))
-            mask = visual.Rect(win, fillColor='black', lineColor='black', size=FIGURES_SCALE * 180 * sqrt_len,
-                               pos=(0, HEIGHT_OFFSET))
+            mask = visual.Rect(win, fillColor='black', lineColor='black', size=FIGURES_SCALE * 180 * sqrt_len)
 
             for _ in range(int(0.5 * FRAME_RATE)):  # fixation cross
                 fixation_cross.draw()
                 check_exit()
                 win.flip()
+
             for _ in range(int(float(trial['FTIME']) * FRAME_RATE)):  # show original matrix
-                matrix.draw()
+                matrix.drawStims()
                 check_exit()
                 win.flip()
 
@@ -232,16 +272,34 @@ def main():
                 win.flip()
             event.clearEvents()
             win.callOnFlip(response_clock.reset)
-
             # TODO: show answers matrix
             event.Mouse(visible=True, newPos=None, win=win)
+            answers_greek.setAutoDrawStims(True)
+            pressed = False
             for _ in range(int(float(trial['STIME']) * FRAME_RATE)):  # show original matrix
-                answers_greek.draw()
+                if mouse.getPressed()[0] == 0:
+                    pressed = False
+                if not pressed:
+                    for idx, pos in enumerate(answers_greek.get_grid()):
+                        if mouse.isPressedIn(pos):
+                            if not answers_greek.get_elem_status(pos):
+                                if len(answers_greek.get_marked_items_names()) < len(trial_stims):
+                                    answers_greek.changeDrawGridElem(pos)
+                            else:
+                                answers_greek.changeDrawGridElem(pos)
+                            pressed = True
+
                 check_exit()
                 win.flip()
+            print answers_greek.get_marked_items_names()
             event.Mouse(visible=False, newPos=None, win=win)
-            # trial['ANS'] = keys[0] if keys else -1
+            answers_greek.setAutoDrawStims(False)
+            answers_greek.setAutoDrawGrid(False)
+            win.flip()
+            check_exit()
+
             trial['ANS'] = -1
+
             # TODO: determine correctness
             trial['ACC'] = -1
             # TODO: show feedback
