@@ -59,11 +59,11 @@ class CaseInsensitiveDict(collections.Mapping):
 
 @atexit.register
 def save_beh_results():
-    with open(join('results', PART_ID + '_beh.csv'), 'w') as beh_file:
+    with open(join('results_litery', PART_ID + '_beh.csv'), 'w') as beh_file:
         beh_writer = csv.writer(beh_file)
         beh_writer.writerows(RESULTS)
     logging.flush()
-    with open(join('results', PART_ID + '_triggermap.txt'), 'w') as trigger_file:
+    with open(join('results_litery', PART_ID + '_triggermap.txt'), 'w') as trigger_file:
         trigger_writer = csv.writer(trigger_file)
         trigger_writer.writerows(TRIGGER_LIST)
 
@@ -200,7 +200,7 @@ def main():
     if not dict_dlg.OK:
         abort_with_error('Info dialog terminated.')
     PART_ID = info['Part_id'] + info['Part_sex'] + info['Part_age']
-    logging.LogFile('results/' + PART_ID + '.log', level=logging.INFO)
+    logging.LogFile('results_litery/' + PART_ID + '.log', level=logging.INFO)
     win = visual.Window(SCREEN_RES.values(), fullscr=True, monitor='testMonitor', units='pix', screen=0,
                         color='Gainsboro')
     mouse = event.Mouse()
