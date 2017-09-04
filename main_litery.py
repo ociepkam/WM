@@ -32,6 +32,7 @@ RESULTS.append(
 TRIGGER_LIST = []
 OPHTHALMIC_PROCEDURE = True
 USE_EEG = True
+UN_CLICK = False
 
 
 class CaseInsensitiveDict(collections.Mapping):
@@ -267,10 +268,9 @@ def main():
                 win.flip()
                 event.waitKeys(keyList=['space'])
             else:
-                jitter = int(frame_rate)
-                jitter = random.choice(range(-jitter, jitter))
-                print jitter
-                for _ in range(int((float(trial['WAIT']) * frame_rate) + jitter)):  # show break
+                # jitter = int(frame_rate)
+                # jitter = random.choice(range(-jitter, jitter))
+                for _ in range(int((float(trial['WAIT']) * frame_rate))):  # + jitter)):  # show break
                     check_exit()
                     win.flip()
             if trial['EXP'] == 'experiment':
@@ -318,7 +318,7 @@ def main():
                             if not answers_greek.get_elem_status(pos):
                                 if len(answers_greek.get_marked_items_names()) < len(trial['TRUE_ANS']):
                                     answers_greek.changeDrawGridElem(pos)
-                            else:
+                            elif UN_CLICK:
                                 answers_greek.changeDrawGridElem(pos)
                             pressed = True
 
@@ -340,7 +340,7 @@ def main():
 
             check_exit()
             if trial['FEEDB']:
-                acc = round(trial['ACC']*100, 2)
+                acc = round(trial['ACC'] * 100, 2)
                 feedb = visual.TextStim(win, text=u'Poprawno\u015B\u0107: {}%'.format(acc), color='black',
                                         height=TEXT_SIZE, wrapWidth=TEXT_SIZE * 50)
                 feedb.setAutoDraw(True)
