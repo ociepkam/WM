@@ -147,6 +147,16 @@ class StimAggregator(object):
             width = self.width_offset * VISUAL_OFFSET * fig_scale + center_shift
             self._pos.append((width, height))
 
+    @staticmethod
+    def get_elem_status(elem):
+        try:
+            if elem.status == 1:
+                return elem.status
+            else:
+                return 0
+        except:
+            return elem.__dict__['autoDraw']
+
     def get_offsets(self):
         return self.width_offset, self.height_offset
 
@@ -159,12 +169,9 @@ class StimAggregator(object):
     def get_marked_items_names(self):
         names = list()
         for idx, elem in enumerate(self._grid_matrix):
-            if elem.__dict__['autoDraw']:
+            if self.get_elem_status(elem):
                 names.append(self._items_names[idx])
         return names
-
-    def get_elem_status(self, elem):
-        return elem.__dict__['autoDraw']
 
     def drawStims(self):
         for item in self._stims_matrix:
@@ -210,8 +217,8 @@ class IntervalTimer(object):
 def main():
     global PART_ID
     info = {'Part_id': '', 'Part_age': '20', 'Part_sex': ['MALE', "FEMALE"], 'ExpDate': '06.2016'}
-    dictDlg = gui.DlgFromDict(dictionary=info, title='PWPR', fixed=['ExpDate'])
-    if not dictDlg.OK:
+    dict_dlg = gui.DlgFromDict(dictionary=info, title='PWPR', fixed=['ExpDate'])
+    if not dict_dlg.OK:
         abort_with_error('Info dialog terminated.')
     PART_ID = info['Part_id'] + info['Part_sex'] + info['Part_age']
     logging.LogFile('results/' + PART_ID + '.log', level=logging.INFO)
@@ -219,15 +226,15 @@ def main():
                         color='Gainsboro')
     mouse = event.Mouse()
     event.Mouse(visible=False, newPos=None, win=win)
-    FRAME_RATE = get_frame_rate(win)
+    frame_rate = get_frame_rate(win)
     concrete_experiment(participant_age=info['Part_age'], participant_id=info['Part_id'],
                         participant_sex=info['Part_sex'],
                         file_name="experiment")
     data = yaml.load(open(join('data', PART_ID + '.yaml')))
     response_clock = core.Clock()
 
-    next_trial = visual.TextStim(win, text=u'Naci\u015Bnij spacj\u0119 aby kontynuowa\u0107', color='black', height=TEXT_SIZE,
-                                 wrapWidth=TEXT_SIZE * 50)
+    next_trial = visual.TextStim(win, text=u'Naci\u015Bnij spacj\u0119 aby kontynuowa\u0107', color='black',
+                                 height=TEXT_SIZE, wrapWidth=TEXT_SIZE * 50)
 
     fixation_cross = visual.TextStim(win, text='+', color='black', height=2 * TEXT_SIZE)
 
@@ -256,17 +263,17 @@ def main():
             sqrt_len = int(sqrt(len(trial['matrix'])))
             mask = visual.Rect(win, fillColor='black', lineColor='black', size=FIGURES_SCALE * 180 * sqrt_len)
 
-            for _ in range(int(0.5 * FRAME_RATE)):  # fixation cross
+            for _ in range(int(0.5 * frame_rate)):  # fixation cross
                 fixation_cross.draw()
                 check_exit()
                 win.flip()
 
-            for _ in range(int(float(trial['FTIME']) * FRAME_RATE)):  # show original matrix
+            for _ in range(int(float(trial['FTIME']) * frame_rate)):  # show original matrix
                 matrix.drawStims()
                 check_exit()
                 win.flip()
 
-            for _ in range(int(float(trial['MTIME']) * FRAME_RATE)):  # show mask
+            for _ in range(int(float(trial['MTIME']) * frame_rate)):  # show mask
                 mask.draw()
                 check_exit()
                 win.flip()
@@ -276,7 +283,7 @@ def main():
             event.Mouse(visible=True, newPos=None, win=win)
             answers_greek.setAutoDrawStims(True)
             pressed = False
-            for _ in range(int(float(trial['STIME']) * FRAME_RATE)):  # show original matrix
+            for _ in range(int(float(trial['STIME']) * frame_rate)):  # show original matrix
                 if mouse.getPressed()[0] == 0:
                     pressed = False
                 if not pressed:
@@ -299,14 +306,14 @@ def main():
             answers_greek.setAutoDrawGrid(False)
             win.flip()
 
-            trial['ACC'] = len([elem for elem in trial['ANS'] if elem in trial['TRUE_ANS']]) / float(len(trial['TRUE_ANS']))
+            good_answers = [elem for elem in trial['ANS'] if elem in trial['TRUE_ANS']]
+            trial['ACC'] = len(good_answers) / float(len(trial['TRUE_ANS']))
 
-            # TODO: show feedback
             check_exit()
             if trial['FEEDB']:
                 acc = round(trial['ACC']*100, 2)
-                feedb = visual.TextStim(win, text=u'Poprawno\u015B\u0107: {}%'.format(acc), color='black', height=TEXT_SIZE,
-                                        wrapWidth=TEXT_SIZE * 50)
+                feedb = visual.TextStim(win, text=u'Poprawno\u015B\u0107: {}%'.format(acc), color='black',
+                                        height=TEXT_SIZE, wrapWidth=TEXT_SIZE * 50)
                 feedb.setAutoDraw(True)
                 win.flip()
                 time.sleep(1)
@@ -318,9 +325,9 @@ def main():
                 win.flip()
                 event.waitKeys(keyList=['space'])
             else:
-                jitter = int(FRAME_RATE)
+                jitter = int(frame_rate)
                 jitter = random.choice(range(-jitter, jitter))
-                for _ in range(int((float(trial['WAIT']) * FRAME_RATE) + jitter)):  # show break
+                for _ in range(int((float(trial['WAIT']) * frame_rate) + jitter)):  # show break
                     check_exit()
                     win.flip()
             RESULTS.append(map(trial.__getitem__, RESULTS[0]))  # collect results
