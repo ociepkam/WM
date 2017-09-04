@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: latin-1 -*-
 import atexit
-import codecs
 import collections
 import csv
 import random
