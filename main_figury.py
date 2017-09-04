@@ -195,7 +195,7 @@ class IntervalTimer(object):
 def main():
     global PART_ID, TRIGGER_LIST, USE_EEG
     info = {'Part_id': '', 'Part_age': '20', 'Part_sex': ['MALE', "FEMALE"], 'ExpDate': '06.2016'}
-    dict_dlg = gui.DlgFromDict(dictionary=info, title='PWPR', fixed=['ExpDate'])
+    dict_dlg = gui.DlgFromDict(dictionary=info, title='WM', fixed=['ExpDate'])
     if not dict_dlg.OK:
         abort_with_error('Info dialog terminated.')
     PART_ID = info['Part_id'] + info['Part_sex'] + info['Part_age']
