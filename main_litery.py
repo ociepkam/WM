@@ -259,6 +259,23 @@ def main():
             sqrt_len = int(sqrt(len(trial['matrix'])))
             mask = visual.Rect(win, fillColor='black', lineColor='black', size=FIGURES_SCALE * 180 * sqrt_len)
 
+            # blank
+            if trial['EXP'] == 'experiment':
+                trigger_no = send_trigger_eeg(trigger_no, EEG)
+            if trial['WAIT'] == 0:
+                next_trial.draw()
+                win.flip()
+                event.waitKeys(keyList=['space'])
+            else:
+                jitter = int(frame_rate)
+                jitter = random.choice(range(-jitter, jitter))
+                print jitter
+                for _ in range(int((float(trial['WAIT']) * frame_rate) + jitter)):  # show break
+                    check_exit()
+                    win.flip()
+            if trial['EXP'] == 'experiment':
+                TRIGGER_LIST.append((str(trigger_no), "WAIT_" + str(trial['elements'])))
+
             for _ in range(int(0.5 * frame_rate)):  # fixation cross
                 fixation_cross.draw()
                 check_exit()
@@ -319,6 +336,7 @@ def main():
 
             good_answers = [elem for elem in trial['ANS'] if elem in trial['TRUE_ANS']]
             trial['ACC'] = len(good_answers) / float(len(trial['TRUE_ANS']))
+            RESULTS.append(map(trial.__getitem__, RESULTS[0]))  # collect results
 
             check_exit()
             if trial['FEEDB']:
@@ -330,18 +348,6 @@ def main():
                 time.sleep(1)
                 feedb.setAutoDraw(False)
                 win.flip()
-
-            if trial['WAIT'] == 0:
-                next_trial.draw()
-                win.flip()
-                event.waitKeys(keyList=['space'])
-            else:
-                jitter = int(frame_rate)
-                jitter = random.choice(range(-jitter, jitter))
-                for _ in range(int((float(trial['WAIT']) * frame_rate) + jitter)):  # show break
-                    check_exit()
-                    win.flip()
-            RESULTS.append(map(trial.__getitem__, RESULTS[0]))  # collect results
 
     # clear all mess
     save_beh_results()
