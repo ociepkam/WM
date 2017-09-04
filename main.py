@@ -18,6 +18,7 @@ from classes.data import greek, figure_list
 from classes.load_data import read_text_from_file
 from classes.ophthalmic_procedure import ophthalmic_procedure
 from classes.check_exit import check_exit
+from classes.triggers import send_trigger_eeg
 from misc.screen_misc import get_screen_res, get_frame_rate
 
 # GLOBALS
@@ -30,7 +31,8 @@ RESULTS.append(
     ['NR', 'FTIME', 'MTIME', 'STIME', 'ELEMENTS', 'ALL', 'UNIQUE', 'FIGURE', 'COLORS', 'FEATURES',
      'FEEDB', 'WAIT', 'EXP', 'LAT', 'TRUE_ANS', 'ANS', 'ACC'])
 TRIGGER_LIST = []
-OPHTHALMIC_PROCEDURE = True
+OPHTHALMIC_PROCEDURE = False
+USE_EEG = True
 
 
 class CaseInsensitiveDict(collections.Mapping):
@@ -192,7 +194,7 @@ class IntervalTimer(object):
 
 
 def main():
-    global PART_ID, TRIGGER_LIST
+    global PART_ID, TRIGGER_LIST, USE_EEG
     info = {'Part_id': '', 'Part_age': '20', 'Part_sex': ['MALE', "FEMALE"], 'ExpDate': '06.2016'}
     dict_dlg = gui.DlgFromDict(dictionary=info, title='PWPR', fixed=['ExpDate'])
     if not dict_dlg.OK:
@@ -215,11 +217,23 @@ def main():
 
     fixation_cross = visual.TextStim(win, text='+', color='black', height=2 * TEXT_SIZE)
 
-    trigger_no = 0
+    # EEG
+    trigger_no = 1
+    # prepare eeg
+    if USE_EEG:
+        try:
+            import parallel
+            EEG = parallel.Parallel()
+            EEG.setData(0x00)
+        except:
+            raise Exception("Can't connect to EEG")
+    else:
+        EEG = None
 
     # ophthalmic procedure
     if OPHTHALMIC_PROCEDURE:
-        trigger_no, TRIGGER_LIST = ophthalmic_procedure(win, SCREEN_RES, frame_rate, trigger_no, TRIGGER_LIST)
+        trigger_no, TRIGGER_LIST = ophthalmic_procedure(win, SCREEN_RES, frame_rate, trigger_no, TRIGGER_LIST,
+                                                        port_eeg=EEG, text_color='black')
 
     # answers
     answers_list_greek = ["g{}.png".format(x) for x in greek]
@@ -251,21 +265,34 @@ def main():
                 check_exit()
                 win.flip()
 
+            # First matrix
+            if trial['EXP'] == 'experiment':
+                trigger_no = send_trigger_eeg(trigger_no, EEG)
             for _ in range(int(float(trial['FTIME']) * frame_rate)):  # show original matrix
                 matrix.drawStims()
                 check_exit()
                 win.flip()
+            if trial['EXP'] == 'experiment':
+                TRIGGER_LIST.append((str(trigger_no), "FM_" + str(trial['elements'])))
 
+            # Mask
+            if trial['EXP'] == 'experiment':
+                trigger_no = send_trigger_eeg(trigger_no, EEG)
             for _ in range(int(float(trial['MTIME']) * frame_rate)):  # show mask
                 mask.draw()
                 check_exit()
                 win.flip()
             event.clearEvents()
             win.callOnFlip(response_clock.reset)
+            if trial['EXP'] == 'experiment':
+                TRIGGER_LIST.append((str(trigger_no), "MASK_" + str(trial['elements'])))
 
+            # Second matrix
             event.Mouse(visible=True, newPos=None, win=win)
             answers_greek.setAutoDrawStims(True)
             pressed = False
+            if trial['EXP'] == 'experiment':
+                trigger_no = send_trigger_eeg(trigger_no, EEG)
             for _ in range(int(float(trial['STIME']) * frame_rate)):  # show original matrix
                 if mouse.getPressed()[0] == 0:
                     pressed = False
@@ -281,6 +308,8 @@ def main():
 
                 check_exit()
                 win.flip()
+            if trial['EXP'] == 'experiment':
+                TRIGGER_LIST.append((str(trigger_no), "SM_" + str(trial['elements'])))
 
             trial['ANS'] = answers_greek.get_marked_items_names()
 

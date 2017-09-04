@@ -6,91 +6,7 @@ list_of_blocks:
 - instruction: instruction_litery_greckie.txt
   instruction_time: -1
   instruction_type: text
-  list_of_matrix:
-  - EXP: training
-    FEEDB: 1
-    FTIME: 2
-    MTIME: '1.5'
-    STIME: 4
-    WAIT: 0
-    all: 1
-    colors: -1
-    elements: 5
-    figure: -1
-    matrix: [null, g7.png, g13.png, g12.png, null, g5.png, null, null, g10.png]
-    matrix_changed: []
-    size: 9
-    unique: 1
-  - EXP: training
-    FEEDB: 1
-    FTIME: 2
-    MTIME: '1.5'
-    STIME: 4
-    WAIT: 0
-    all: 1
-    colors: -1
-    elements: 3
-    figure: -1
-    matrix: [g10.png, g9.png, null, null, null, null, g6.png, null, null]
-    matrix_changed: []
-    size: 9
-    unique: 1
-  - EXP: training
-    FEEDB: 1
-    FTIME: 2
-    MTIME: '1.5'
-    STIME: 4
-    WAIT: 0
-    all: 1
-    colors: -1
-    elements: 4
-    figure: -1
-    matrix: [g13.png, null, null, g11.png, g7.png, null, null, g12.png, null]
-    matrix_changed: []
-    size: 9
-    unique: 1
-  - EXP: training
-    FEEDB: 1
-    FTIME: 2
-    MTIME: '1.5'
-    STIME: 4
-    WAIT: 0
-    all: 1
-    colors: -1
-    elements: 5
-    figure: -1
-    matrix: [g8.png, g9.png, null, null, g6.png, null, g12.png, null, g5.png]
-    matrix_changed: []
-    size: 9
-    unique: 1
-  - EXP: training
-    FEEDB: 1
-    FTIME: 2
-    MTIME: '1.5'
-    STIME: 4
-    WAIT: 0
-    all: 1
-    colors: -1
-    elements: 3
-    figure: -1
-    matrix: [g7.png, null, null, null, null, g13.png, g8.png, null, null]
-    matrix_changed: []
-    size: 9
-    unique: 1
-  - EXP: training
-    FEEDB: 1
-    FTIME: 2
-    MTIME: '1.5'
-    STIME: 4
-    WAIT: 0
-    all: 1
-    colors: -1
-    elements: 4
-    figure: -1
-    matrix: [null, g10.png, g13.png, null, g5.png, g7.png, null, null, null]
-    matrix_changed: []
-    size: 9
-    unique: 1
+  list_of_matrix: []
 - instruction: after_litery_greckie_training.txt
   instruction_time: -1
   instruction_type: text
@@ -105,7 +21,49 @@ list_of_blocks:
     colors: -1
     elements: 5
     figure: -1
-    matrix: [g6.png, g10.png, g13.png, g12.png, g7.png, null, null, null, null]
+    matrix: [g9.png, g5.png, null, null, null, g8.png, g12.png, g13.png, null]
+    matrix_changed: []
+    size: 9
+    unique: 1
+  - EXP: experiment
+    FEEDB: 0
+    FTIME: 2
+    MTIME: '1.5'
+    STIME: 4
+    WAIT: 0
+    all: 1
+    colors: -1
+    elements: 4
+    figure: -1
+    matrix: [null, null, g6.png, null, null, g12.png, g9.png, g10.png, null]
+    matrix_changed: []
+    size: 9
+    unique: 1
+  - EXP: experiment
+    FEEDB: 0
+    FTIME: 2
+    MTIME: '1.5'
+    STIME: 4
+    WAIT: 0
+    all: 1
+    colors: -1
+    elements: 4
+    figure: -1
+    matrix: [g13.png, g5.png, null, null, null, g9.png, null, null, g8.png]
+    matrix_changed: []
+    size: 9
+    unique: 1
+  - EXP: experiment
+    FEEDB: 0
+    FTIME: 2
+    MTIME: '1.5'
+    STIME: 4
+    WAIT: 0
+    all: 1
+    colors: -1
+    elements: 4
+    figure: -1
+    matrix: [g12.png, g5.png, null, g9.png, null, null, null, null, g7.png]
     matrix_changed: []
     size: 9
     unique: 1
@@ -119,7 +77,119 @@ list_of_blocks:
     colors: -1
     elements: 3
     figure: -1
-    matrix: [null, null, g12.png, null, null, null, g8.png, g11.png, null]
+    matrix: [null, g10.png, null, null, null, g5.png, null, g11.png, null]
+    matrix_changed: []
+    size: 9
+    unique: 1
+  - EXP: experiment
+    FEEDB: 0
+    FTIME: 2
+    MTIME: '1.5'
+    STIME: 4
+    WAIT: 0
+    all: 1
+    colors: -1
+    elements: 4
+    figure: -1
+    matrix: [null, null, g12.png, null, g8.png, null, null, g7.png, g5.png]
+    matrix_changed: []
+    size: 9
+    unique: 1
+  - EXP: experiment
+    FEEDB: 0
+    FTIME: 2
+    MTIME: '1.5'
+    STIME: 4
+    WAIT: 0
+    all: 1
+    colors: -1
+    elements: 4
+    figure: -1
+    matrix: [null, g13.png, g12.png, null, null, g5.png, null, null, g8.png]
+    matrix_changed: []
+    size: 9
+    unique: 1
+  - EXP: experiment
+    FEEDB: 0
+    FTIME: 2
+    MTIME: '1.5'
+    STIME: 4
+    WAIT: 0
+    all: 1
+    colors: -1
+    elements: 3
+    figure: -1
+    matrix: [null, g7.png, g6.png, null, g10.png, null, null, null, null]
+    matrix_changed: []
+    size: 9
+    unique: 1
+  - EXP: experiment
+    FEEDB: 0
+    FTIME: 2
+    MTIME: '1.5'
+    STIME: 4
+    WAIT: 0
+    all: 1
+    colors: -1
+    elements: 3
+    figure: -1
+    matrix: [null, null, g10.png, null, null, g11.png, null, null, g12.png]
+    matrix_changed: []
+    size: 9
+    unique: 1
+  - EXP: experiment
+    FEEDB: 0
+    FTIME: 2
+    MTIME: '1.5'
+    STIME: 4
+    WAIT: 0
+    all: 1
+    colors: -1
+    elements: 4
+    figure: -1
+    matrix: [null, null, g7.png, null, g5.png, g8.png, null, null, g10.png]
+    matrix_changed: []
+    size: 9
+    unique: 1
+  - EXP: experiment
+    FEEDB: 0
+    FTIME: 2
+    MTIME: '1.5'
+    STIME: 4
+    WAIT: 0
+    all: 1
+    colors: -1
+    elements: 3
+    figure: -1
+    matrix: [null, g7.png, null, null, null, null, null, g13.png, g12.png]
+    matrix_changed: []
+    size: 9
+    unique: 1
+  - EXP: experiment
+    FEEDB: 0
+    FTIME: 2
+    MTIME: '1.5'
+    STIME: 4
+    WAIT: 0
+    all: 1
+    colors: -1
+    elements: 4
+    figure: -1
+    matrix: [null, null, null, null, null, g13.png, g10.png, g11.png, g12.png]
+    matrix_changed: []
+    size: 9
+    unique: 1
+  - EXP: experiment
+    FEEDB: 0
+    FTIME: 2
+    MTIME: '1.5'
+    STIME: 4
+    WAIT: 0
+    all: 1
+    colors: -1
+    elements: 4
+    figure: -1
+    matrix: [null, g12.png, g11.png, null, g8.png, null, g6.png, null, null]
     matrix_changed: []
     size: 9
     unique: 1
@@ -133,7 +203,7 @@ list_of_blocks:
     colors: -1
     elements: 5
     figure: -1
-    matrix: [null, g10.png, null, g11.png, null, null, g13.png, g12.png, g5.png]
+    matrix: [null, null, null, g10.png, g5.png, g9.png, g12.png, g13.png, null]
     matrix_changed: []
     size: 9
     unique: 1
@@ -147,21 +217,7 @@ list_of_blocks:
     colors: -1
     elements: 4
     figure: -1
-    matrix: [null, g11.png, null, null, null, null, g12.png, g6.png, g8.png]
-    matrix_changed: []
-    size: 9
-    unique: 1
-  - EXP: experiment
-    FEEDB: 0
-    FTIME: 2
-    MTIME: '1.5'
-    STIME: 4
-    WAIT: 0
-    all: 1
-    colors: -1
-    elements: 4
-    figure: -1
-    matrix: [null, g11.png, g5.png, g7.png, null, null, null, null, g8.png]
+    matrix: [null, null, g11.png, g7.png, null, null, g9.png, null, g6.png]
     matrix_changed: []
     size: 9
     unique: 1
@@ -175,35 +231,7 @@ list_of_blocks:
     colors: -1
     elements: 5
     figure: -1
-    matrix: [g7.png, null, null, g12.png, g11.png, null, g10.png, null, g13.png]
-    matrix_changed: []
-    size: 9
-    unique: 1
-  - EXP: experiment
-    FEEDB: 0
-    FTIME: 2
-    MTIME: '1.5'
-    STIME: 4
-    WAIT: 0
-    all: 1
-    colors: -1
-    elements: 4
-    figure: -1
-    matrix: [null, g10.png, g5.png, null, g6.png, null, null, g12.png, null]
-    matrix_changed: []
-    size: 9
-    unique: 1
-  - EXP: experiment
-    FEEDB: 0
-    FTIME: 2
-    MTIME: '1.5'
-    STIME: 4
-    WAIT: 0
-    all: 1
-    colors: -1
-    elements: 4
-    figure: -1
-    matrix: [g12.png, g8.png, null, null, g13.png, g7.png, null, null, null]
+    matrix: [g9.png, g11.png, null, g7.png, null, g5.png, null, g13.png, null]
     matrix_changed: []
     size: 9
     unique: 1
@@ -217,7 +245,7 @@ list_of_blocks:
     colors: -1
     elements: 3
     figure: -1
-    matrix: [null, g11.png, null, null, null, g7.png, null, null, g12.png]
+    matrix: [null, null, null, g10.png, g7.png, null, g8.png, null, null]
     matrix_changed: []
     size: 9
     unique: 1
@@ -231,7 +259,7 @@ list_of_blocks:
     colors: -1
     elements: 3
     figure: -1
-    matrix: [null, g8.png, g5.png, null, null, null, null, null, g11.png]
+    matrix: [null, g13.png, null, null, null, g10.png, null, null, g8.png]
     matrix_changed: []
     size: 9
     unique: 1
@@ -245,7 +273,7 @@ list_of_blocks:
     colors: -1
     elements: 5
     figure: -1
-    matrix: [g13.png, g7.png, null, g12.png, null, g9.png, g8.png, null, null]
+    matrix: [null, null, null, g11.png, null, g6.png, g10.png, g9.png, g12.png]
     matrix_changed: []
     size: 9
     unique: 1
@@ -259,7 +287,7 @@ list_of_blocks:
     colors: -1
     elements: 3
     figure: -1
-    matrix: [g9.png, g12.png, null, null, null, g8.png, null, null, null]
+    matrix: [null, null, g8.png, null, null, g7.png, null, g12.png, null]
     matrix_changed: []
     size: 9
     unique: 1
@@ -273,7 +301,7 @@ list_of_blocks:
     colors: -1
     elements: 4
     figure: -1
-    matrix: [null, null, null, g6.png, null, null, g11.png, g12.png, g5.png]
+    matrix: [null, g7.png, null, g5.png, g10.png, null, null, g11.png, null]
     matrix_changed: []
     size: 9
     unique: 1
@@ -287,7 +315,91 @@ list_of_blocks:
     colors: -1
     elements: 4
     figure: -1
-    matrix: [null, g8.png, null, g11.png, null, g5.png, null, g6.png, null]
+    matrix: [g6.png, null, null, null, g11.png, null, null, g12.png, g13.png]
+    matrix_changed: []
+    size: 9
+    unique: 1
+  - EXP: experiment
+    FEEDB: 0
+    FTIME: 2
+    MTIME: '1.5'
+    STIME: 4
+    WAIT: 0
+    all: 1
+    colors: -1
+    elements: 3
+    figure: -1
+    matrix: [g9.png, null, g8.png, null, null, null, null, null, g6.png]
+    matrix_changed: []
+    size: 9
+    unique: 1
+  - EXP: experiment
+    FEEDB: 0
+    FTIME: 2
+    MTIME: '1.5'
+    STIME: 4
+    WAIT: 0
+    all: 1
+    colors: -1
+    elements: 3
+    figure: -1
+    matrix: [null, null, null, null, g10.png, g8.png, g13.png, null, null]
+    matrix_changed: []
+    size: 9
+    unique: 1
+  - EXP: experiment
+    FEEDB: 0
+    FTIME: 2
+    MTIME: '1.5'
+    STIME: 4
+    WAIT: 0
+    all: 1
+    colors: -1
+    elements: 3
+    figure: -1
+    matrix: [null, null, null, g11.png, null, null, g9.png, g13.png, null]
+    matrix_changed: []
+    size: 9
+    unique: 1
+  - EXP: experiment
+    FEEDB: 0
+    FTIME: 2
+    MTIME: '1.5'
+    STIME: 4
+    WAIT: 0
+    all: 1
+    colors: -1
+    elements: 5
+    figure: -1
+    matrix: [g12.png, g13.png, g7.png, null, g8.png, g6.png, null, null, null]
+    matrix_changed: []
+    size: 9
+    unique: 1
+  - EXP: experiment
+    FEEDB: 0
+    FTIME: 2
+    MTIME: '1.5'
+    STIME: 4
+    WAIT: 0
+    all: 1
+    colors: -1
+    elements: 5
+    figure: -1
+    matrix: [g5.png, null, g13.png, g6.png, null, g7.png, g10.png, null, null]
+    matrix_changed: []
+    size: 9
+    unique: 1
+  - EXP: experiment
+    FEEDB: 0
+    FTIME: 2
+    MTIME: '1.5'
+    STIME: 4
+    WAIT: 0
+    all: 1
+    colors: -1
+    elements: 3
+    figure: -1
+    matrix: [g8.png, null, null, g6.png, null, null, g7.png, null, null]
     matrix_changed: []
     size: 9
     unique: 1
@@ -301,35 +413,7 @@ list_of_blocks:
     colors: -1
     elements: 4
     figure: -1
-    matrix: [null, g6.png, null, null, null, g12.png, g13.png, null, g8.png]
-    matrix_changed: []
-    size: 9
-    unique: 1
-  - EXP: experiment
-    FEEDB: 0
-    FTIME: 2
-    MTIME: '1.5'
-    STIME: 4
-    WAIT: 0
-    all: 1
-    colors: -1
-    elements: 4
-    figure: -1
-    matrix: [null, g9.png, g8.png, null, null, g13.png, g7.png, null, null]
-    matrix_changed: []
-    size: 9
-    unique: 1
-  - EXP: experiment
-    FEEDB: 0
-    FTIME: 2
-    MTIME: '1.5'
-    STIME: 4
-    WAIT: 0
-    all: 1
-    colors: -1
-    elements: 3
-    figure: -1
-    matrix: [g6.png, null, null, g11.png, null, null, g13.png, null, null]
+    matrix: [null, g8.png, g9.png, null, null, g6.png, null, null, g12.png]
     matrix_changed: []
     size: 9
     unique: 1
@@ -343,7 +427,7 @@ list_of_blocks:
     colors: -1
     elements: 5
     figure: -1
-    matrix: [null, null, g10.png, g8.png, g5.png, null, null, g12.png, g13.png]
+    matrix: [g12.png, g9.png, g11.png, g7.png, null, null, g10.png, null, null]
     matrix_changed: []
     size: 9
     unique: 1
@@ -357,7 +441,7 @@ list_of_blocks:
     colors: -1
     elements: 5
     figure: -1
-    matrix: [g10.png, g6.png, g13.png, null, null, g5.png, null, g7.png, null]
+    matrix: [g5.png, g7.png, g6.png, null, null, g13.png, g12.png, null, null]
     matrix_changed: []
     size: 9
     unique: 1
@@ -371,7 +455,7 @@ list_of_blocks:
     colors: -1
     elements: 5
     figure: -1
-    matrix: [g13.png, g6.png, g11.png, null, g8.png, null, null, g10.png, null]
+    matrix: [g6.png, g12.png, null, g5.png, g9.png, null, null, null, g7.png]
     matrix_changed: []
     size: 9
     unique: 1
@@ -385,35 +469,7 @@ list_of_blocks:
     colors: -1
     elements: 5
     figure: -1
-    matrix: [g5.png, null, g8.png, null, null, null, g10.png, g12.png, g11.png]
-    matrix_changed: []
-    size: 9
-    unique: 1
-  - EXP: experiment
-    FEEDB: 0
-    FTIME: 2
-    MTIME: '1.5'
-    STIME: 4
-    WAIT: 0
-    all: 1
-    colors: -1
-    elements: 4
-    figure: -1
-    matrix: [g6.png, null, g8.png, null, g9.png, null, null, g11.png, null]
-    matrix_changed: []
-    size: 9
-    unique: 1
-  - EXP: experiment
-    FEEDB: 0
-    FTIME: 2
-    MTIME: '1.5'
-    STIME: 4
-    WAIT: 0
-    all: 1
-    colors: -1
-    elements: 3
-    figure: -1
-    matrix: [g8.png, null, null, null, null, null, null, g13.png, g12.png]
+    matrix: [g10.png, g13.png, g5.png, null, null, g6.png, null, g7.png, null]
     matrix_changed: []
     size: 9
     unique: 1
@@ -427,7 +483,21 @@ list_of_blocks:
     colors: -1
     elements: 5
     figure: -1
-    matrix: [g9.png, null, g6.png, null, null, null, g13.png, g7.png, g10.png]
+    matrix: [null, null, g10.png, g12.png, g9.png, g5.png, null, g7.png, null]
+    matrix_changed: []
+    size: 9
+    unique: 1
+  - EXP: experiment
+    FEEDB: 0
+    FTIME: 2
+    MTIME: '1.5'
+    STIME: 4
+    WAIT: 0
+    all: 1
+    colors: -1
+    elements: 3
+    figure: -1
+    matrix: [g10.png, null, null, g8.png, null, null, g11.png, null, null]
     matrix_changed: []
     size: 9
     unique: 1
@@ -441,161 +511,7 @@ list_of_blocks:
     colors: -1
     elements: 5
     figure: -1
-    matrix: [null, g12.png, g13.png, g9.png, null, g11.png, null, null, g5.png]
-    matrix_changed: []
-    size: 9
-    unique: 1
-  - EXP: experiment
-    FEEDB: 0
-    FTIME: 2
-    MTIME: '1.5'
-    STIME: 4
-    WAIT: 0
-    all: 1
-    colors: -1
-    elements: 3
-    figure: -1
-    matrix: [null, g7.png, null, null, null, g11.png, null, g6.png, null]
-    matrix_changed: []
-    size: 9
-    unique: 1
-  - EXP: experiment
-    FEEDB: 0
-    FTIME: 2
-    MTIME: '1.5'
-    STIME: 4
-    WAIT: 0
-    all: 1
-    colors: -1
-    elements: 3
-    figure: -1
-    matrix: [g6.png, g10.png, null, null, null, g5.png, null, null, null]
-    matrix_changed: []
-    size: 9
-    unique: 1
-  - EXP: experiment
-    FEEDB: 0
-    FTIME: 2
-    MTIME: '1.5'
-    STIME: 4
-    WAIT: 0
-    all: 1
-    colors: -1
-    elements: 3
-    figure: -1
-    matrix: [null, null, null, g12.png, g11.png, null, g5.png, null, null]
-    matrix_changed: []
-    size: 9
-    unique: 1
-  - EXP: experiment
-    FEEDB: 0
-    FTIME: 2
-    MTIME: '1.5'
-    STIME: 4
-    WAIT: 0
-    all: 1
-    colors: -1
-    elements: 5
-    figure: -1
-    matrix: [g11.png, null, null, null, g12.png, g9.png, null, g8.png, g6.png]
-    matrix_changed: []
-    size: 9
-    unique: 1
-  - EXP: experiment
-    FEEDB: 0
-    FTIME: 2
-    MTIME: '1.5'
-    STIME: 4
-    WAIT: 0
-    all: 1
-    colors: -1
-    elements: 3
-    figure: -1
-    matrix: [g5.png, null, null, null, g8.png, null, g12.png, null, null]
-    matrix_changed: []
-    size: 9
-    unique: 1
-  - EXP: experiment
-    FEEDB: 0
-    FTIME: 2
-    MTIME: '1.5'
-    STIME: 4
-    WAIT: 0
-    all: 1
-    colors: -1
-    elements: 4
-    figure: -1
-    matrix: [g5.png, null, null, null, g12.png, null, null, g7.png, g13.png]
-    matrix_changed: []
-    size: 9
-    unique: 1
-  - EXP: experiment
-    FEEDB: 0
-    FTIME: 2
-    MTIME: '1.5'
-    STIME: 4
-    WAIT: 0
-    all: 1
-    colors: -1
-    elements: 4
-    figure: -1
-    matrix: [g8.png, null, null, g10.png, g6.png, null, null, null, g11.png]
-    matrix_changed: []
-    size: 9
-    unique: 1
-  - EXP: experiment
-    FEEDB: 0
-    FTIME: 2
-    MTIME: '1.5'
-    STIME: 4
-    WAIT: 0
-    all: 1
-    colors: -1
-    elements: 5
-    figure: -1
-    matrix: [null, g5.png, null, g10.png, g12.png, g9.png, null, null, g7.png]
-    matrix_changed: []
-    size: 9
-    unique: 1
-  - EXP: experiment
-    FEEDB: 0
-    FTIME: 2
-    MTIME: '1.5'
-    STIME: 4
-    WAIT: 0
-    all: 1
-    colors: -1
-    elements: 3
-    figure: -1
-    matrix: [null, g13.png, g7.png, null, null, g10.png, null, null, null]
-    matrix_changed: []
-    size: 9
-    unique: 1
-  - EXP: experiment
-    FEEDB: 0
-    FTIME: 2
-    MTIME: '1.5'
-    STIME: 4
-    WAIT: 0
-    all: 1
-    colors: -1
-    elements: 4
-    figure: -1
-    matrix: [null, g10.png, g9.png, null, g11.png, null, g12.png, null, null]
-    matrix_changed: []
-    size: 9
-    unique: 1
-  - EXP: experiment
-    FEEDB: 0
-    FTIME: 2
-    MTIME: '1.5'
-    STIME: 4
-    WAIT: 0
-    all: 1
-    colors: -1
-    elements: 3
-    figure: -1
-    matrix: [null, null, null, g10.png, null, null, null, g11.png, g7.png]
+    matrix: [null, null, null, g10.png, g6.png, g12.png, null, g9.png, g8.png]
     matrix_changed: []
     size: 9
     unique: 1
