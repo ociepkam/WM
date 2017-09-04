@@ -13,7 +13,7 @@ import yaml
 from psychopy import visual, core, event, logging, gui
 
 from concrete_experiment import concrete_experiment
-from classes.data import greek, figure_list
+from classes.data import greek, figure_list as figure
 from classes.load_data import read_text_from_file
 from classes.ophthalmic_procedure import ophthalmic_procedure
 from classes.check_exit import check_exit
@@ -30,7 +30,7 @@ RESULTS.append(
     ['NR', 'FTIME', 'MTIME', 'STIME', 'ELEMENTS', 'ALL', 'UNIQUE', 'FIGURE', 'COLORS', 'FEATURES',
      'FEEDB', 'WAIT', 'EXP', 'LAT', 'TRUE_ANS', 'ANS', 'ACC'])
 TRIGGER_LIST = []
-OPHTHALMIC_PROCEDURE = False
+OPHTHALMIC_PROCEDURE = True
 USE_EEG = True
 
 
@@ -207,7 +207,7 @@ def main():
     frame_rate = get_frame_rate(win)
     concrete_experiment(participant_age=info['Part_age'], participant_id=info['Part_id'],
                         participant_sex=info['Part_sex'],
-                        file_name="experiment")
+                        file_name="experiment_figury")
     data = yaml.load(open(join('data', PART_ID + '.yaml')))
     response_clock = core.Clock()
 
@@ -235,7 +235,7 @@ def main():
                                                         port_eeg=EEG, text_color='black')
 
     # answers
-    answers_list_greek = ["g{}.png".format(x) for x in greek]
+    answers_list_figure = ["{}_{}.png".format(x, y) for x, y in figure]
 
     problem_number = 0
     for block in data['list_of_blocks']:
@@ -253,8 +253,8 @@ def main():
 
             # prepare visualisation
             matrix = StimAggregator(win, trial['matrix'], fig_scale=FIGURES_SCALE)
-            random.shuffle(answers_list_greek)
-            answers_greek = StimAggregator(win, answers_list_greek, fig_scale=FIGURES_SCALE)
+            random.shuffle(answers_list_figure)
+            answers_figure = StimAggregator(win, answers_list_figure, fig_scale=FIGURES_SCALE)
 
             sqrt_len = int(sqrt(len(trial['matrix'])))
             mask = visual.Rect(win, fillColor='black', lineColor='black', size=FIGURES_SCALE * 180 * sqrt_len)
@@ -288,7 +288,7 @@ def main():
 
             # Second matrix
             event.Mouse(visible=True, newPos=None, win=win)
-            answers_greek.setAutoDrawStims(True)
+            answers_figure.setAutoDrawStims(True)
             pressed = False
             if trial['EXP'] == 'experiment':
                 trigger_no = send_trigger_eeg(trigger_no, EEG)
@@ -296,13 +296,13 @@ def main():
                 if mouse.getPressed()[0] == 0:
                     pressed = False
                 if not pressed:
-                    for idx, pos in enumerate(answers_greek.get_grid()):
+                    for idx, pos in enumerate(answers_figure.get_grid()):
                         if mouse.isPressedIn(pos):
-                            if not answers_greek.get_elem_status(pos):
-                                if len(answers_greek.get_marked_items_names()) < len(trial['TRUE_ANS']):
-                                    answers_greek.changeDrawGridElem(pos)
+                            if not answers_figure.get_elem_status(pos):
+                                if len(answers_figure.get_marked_items_names()) < len(trial['TRUE_ANS']):
+                                    answers_figure.changeDrawGridElem(pos)
                             else:
-                                answers_greek.changeDrawGridElem(pos)
+                                answers_figure.changeDrawGridElem(pos)
                             pressed = True
 
                 check_exit()
@@ -310,11 +310,11 @@ def main():
             if trial['EXP'] == 'experiment':
                 TRIGGER_LIST.append((str(trigger_no), "SM_" + str(trial['elements'])))
 
-            trial['ANS'] = answers_greek.get_marked_items_names()
+            trial['ANS'] = answers_figure.get_marked_items_names()
 
             event.Mouse(visible=False, newPos=None, win=win)
-            answers_greek.setAutoDrawStims(False)
-            answers_greek.setAutoDrawGrid(False)
+            answers_figure.setAutoDrawStims(False)
+            answers_figure.setAutoDrawGrid(False)
             win.flip()
 
             good_answers = [elem for elem in trial['ANS'] if elem in trial['TRUE_ANS']]

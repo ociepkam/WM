@@ -1,2 +1,2 @@
 NR,FTIME,MTIME,STIME,ELEMENTS,ALL,UNIQUE,FIGURE,COLORS,FEATURES,FEEDB,WAIT,EXP,LAT,TRUE_ANS,ANS,ACC
-0,2,1.5,4,5,1,1,-1,-1,-2,0,0,experiment,,"['g9.png', 'g5.png', 'g8.png', 'g12.png', 'g13.png']",[],0.0
+0,2,1.5,4,4,1,1,1,0,1,1,0,training,,"['17_15.png', '21_15.png', '20_15.png', '19_15.png']","['23_15.png', '21_15.png', '20_15.png', '18_15.png']",0.5

@@ -44,8 +44,8 @@ class Matrix:
             elif not self.figure:
                 fig_list = [x for x in fig_list if x[0] == 3]
 
-        self.all_possible_figures = fig_list
-        self.possible_figures = fig_list
+        self.all_possible_figures = deepcopy(fig_list)
+        self.possible_figures = deepcopy(fig_list)
 
         for _ in range(self.size):
             self.matrix.append(None)
