@@ -17586,3 +17586,123 @@
 16.9754 	DATA 	Keypress: space
 16.9754 	DATA 	Key pressed: space
 17.0054 	CRITICAL 	Experiment finished by user! f7 pressed.
+1.9763 	INFO 	Loaded calibration from:2015_04_13 10:20
+1.9764 	INFO 	['2015_04_13 10:20']
+1.9771 	INFO 	configured pyglet screen 0
+2.1979 	INFO 	Using gamma table of operating system
+2.7611 	INFO 	Mouse: using default window
+3.4445 	INFO 	Detected framerate: 60 frames per sec.
+3.6566 	INFO 	Starting ophthalmic procedure... 
+1.7998 	INFO 	Loaded calibration from:2015_04_13 10:20
+1.7998 	INFO 	['2015_04_13 10:20']
+1.8004 	INFO 	configured pyglet screen 0
+2.0103 	INFO 	Using gamma table of operating system
+2.5601 	INFO 	Mouse: using default window
+3.1431 	WARNING 	t of last frame was 33.30ms (=1/30)
+3.6434 	INFO 	Detected framerate: 60 frames per sec.
+3.8481 	INFO 	Starting ophthalmic procedure... 
+2.0181 	INFO 	Loaded calibration from:2015_04_13 10:20
+2.0181 	INFO 	['2015_04_13 10:20']
+2.0185 	INFO 	configured pyglet screen 0
+2.2240 	INFO 	Using gamma table of operating system
+2.6244 	INFO 	Mouse: using default window
+3.3078 	INFO 	Detected framerate: 60 frames per sec.
+3.5184 	INFO 	Starting ophthalmic procedure... 
+3.5909 	EXP 	TextStim: autoLog = None
+3.5909 	EXP 	TextStim: units = None
+3.5909 	EXP 	TextStim: useShaders = None
+3.5909 	EXP 	TextStim: depth = None
+3.5909 	EXP 	TextStim: ori = None
+3.5909 	EXP 	TextStim: pos = None
+3.5909 	EXP 	TextStim: colorSpace = None
+3.5909 	EXP 	TextStim: opacity = None
+3.5909 	EXP 	TextStim: contrast = None
+3.5909 	EXP 	TextStim: autoLog = None
+3.5909 	EXP 	TextStim: units = None
+3.5909 	EXP 	TextStim: useShaders = None
+3.5909 	EXP 	TextStim: depth = None
+3.5909 	EXP 	TextStim: ori = None
+3.5909 	EXP 	TextStim: pos = None
+3.5909 	EXP 	TextStim: colorSpace = None
+3.5909 	EXP 	TextStim: opacity = None
+3.5909 	EXP 	TextStim: contrast = None
+3.5909 	EXP 	TextStim: autoLog = None
+3.5909 	EXP 	TextStim: units = None
+3.5909 	EXP 	TextStim: useShaders = None
+3.5909 	EXP 	TextStim: depth = None
+3.5909 	EXP 	TextStim: ori = None
+3.5909 	EXP 	TextStim: pos = None
+3.5909 	EXP 	TextStim: colorSpace = None
+3.5909 	EXP 	TextStim: opacity = None
+3.5909 	EXP 	TextStim: contrast = None
+3.5909 	EXP 	TextStim: autoLog = None
+3.5909 	EXP 	TextStim: units = None
+3.5909 	EXP 	TextStim: useShaders = None
+3.5909 	EXP 	TextStim: depth = None
+3.5909 	EXP 	TextStim: ori = None
+3.5909 	EXP 	TextStim: pos = None
+3.5909 	EXP 	TextStim: colorSpace = None
+3.5909 	EXP 	TextStim: opacity = None
+3.5909 	EXP 	TextStim: contrast = None
+3.5909 	EXP 	TextStim: autoLog = None
+3.5909 	EXP 	TextStim: units = None
+3.5909 	EXP 	TextStim: useShaders = None
+3.5909 	EXP 	TextStim: depth = None
+3.5909 	EXP 	TextStim: ori = None
+3.5909 	EXP 	TextStim: pos = None
+3.5909 	EXP 	TextStim: colorSpace = None
+3.5909 	EXP 	TextStim: opacity = None
+3.5909 	EXP 	TextStim: contrast = None
+3.5909 	EXP 	TextStim: autoLog = None
+3.5909 	EXP 	TextStim: units = None
+3.5909 	EXP 	TextStim: useShaders = None
+3.5909 	EXP 	TextStim: depth = None
+3.5909 	EXP 	TextStim: ori = None
+3.5909 	EXP 	TextStim: pos = None
+3.5909 	EXP 	TextStim: colorSpace = None
+3.5909 	EXP 	TextStim: opacity = None
+3.5909 	EXP 	TextStim: contrast = None
+3.5909 	EXP 	TextStim: autoLog = None
+3.5909 	EXP 	TextStim: units = None
+3.5909 	EXP 	TextStim: useShaders = None
+3.5909 	EXP 	TextStim: depth = None
+3.5909 	EXP 	TextStim: ori = None
+3.5909 	EXP 	TextStim: pos = None
+3.5909 	EXP 	TextStim: colorSpace = None
+3.5909 	EXP 	TextStim: opacity = None
+3.5909 	EXP 	TextStim: contrast = None
+3.5909 	EXP 	TextStim: autoLog = None
+3.5909 	EXP 	TextStim: units = None
+3.5909 	EXP 	TextStim: useShaders = None
+3.5909 	EXP 	TextStim: depth = None
+3.5909 	EXP 	TextStim: ori = None
+3.5909 	EXP 	TextStim: pos = None
+3.5909 	EXP 	TextStim: colorSpace = None
+3.5909 	EXP 	TextStim: opacity = None
+3.5909 	EXP 	TextStim: contrast = None
+3.5909 	EXP 	TextStim: autoDraw = None
+4.9080 	DATA 	Keypress: space
+8.6904 	EXP 	TextStim: autoDraw = None
+17.9564 	EXP 	TextStim: autoDraw = None
+23.0725 	EXP 	TextStim: autoDraw = None
+23.0725 	EXP 	TextStim: autoDraw = None
+23.0725 	EXP 	TextStim: autoDraw = None
+23.0725 	EXP 	TextStim: autoDraw = None
+23.0725 	EXP 	TextStim: autoDraw = None
+32.2885 	EXP 	TextStim: autoDraw = None
+32.2885 	EXP 	TextStim: autoDraw = None
+32.2885 	EXP 	TextStim: autoDraw = None
+32.2885 	EXP 	TextStim: autoDraw = None
+32.2886 	INFO 	Ophthalmic procedure finished correctly!
+32.4383 	EXP 	TextStim: autoLog = None
+32.4383 	EXP 	TextStim: units = None
+32.4383 	EXP 	TextStim: useShaders = None
+32.4383 	EXP 	TextStim: depth = None
+32.4383 	EXP 	TextStim: ori = None
+32.4383 	EXP 	TextStim: pos = None
+32.4383 	EXP 	TextStim: colorSpace = None
+32.4383 	EXP 	TextStim: opacity = None
+32.4383 	EXP 	TextStim: contrast = None
+224.5044 	DATA 	Keypress: f7
+224.5044 	DATA 	Key pressed: f7
+224.5044 	CRITICAL 	Experiment finished by user on info screen! F7 pressed.

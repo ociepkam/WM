@@ -15,6 +15,9 @@ from psychopy import visual, core, event, logging, gui
 
 from concrete_experiment import concrete_experiment
 from classes.data import greek, figure_list
+from classes.load_data import read_text_from_file
+from classes.ophthalmic_procedure import ophthalmic_procedure
+from classes.check_exit import check_exit
 from misc.screen_misc import get_screen_res, get_frame_rate
 
 # GLOBALS
@@ -27,6 +30,7 @@ RESULTS.append(
     ['NR', 'FTIME', 'MTIME', 'STIME', 'ELEMENTS', 'ALL', 'UNIQUE', 'FIGURE', 'COLORS', 'FEATURES',
      'FEEDB', 'WAIT', 'EXP', 'LAT', 'TRUE_ANS', 'ANS', 'ACC'])
 TRIGGER_LIST = []
+OPHTHALMIC_PROCEDURE = True
 
 
 class CaseInsensitiveDict(collections.Mapping):
@@ -62,38 +66,11 @@ def save_beh_results():
         trigger_writer.writerows(TRIGGER_LIST)
 
 
-def read_text_from_file(file_name, insert=''):
-    """
-    Method that read message from text file, and optionally add some
-    dynamically generated info.
-    :param file_name: Name of file to read
-    :param insert:
-    :return: message
-    """
-    if not isinstance(file_name, str):
-        logging.error('Problem with file reading, filename must be a string')
-        raise TypeError('file_name must be a string')
-    msg = list()
-    with codecs.open(file_name, encoding='utf-8', mode='r') as data_file:
-        for line in data_file:
-            if not line.startswith('#'):  # if not commented line
-                if line.startswith('<--insert-->'):
-                    if insert:
-                        msg.append(insert)
-                else:
-                    msg.append(line)
-    return ''.join(msg)
-
-
-def check_exit(key='f7'):
-    stop = event.getKeys(keyList=[key])
-    if stop:
-        abort_with_error('Experiment finished by user! {} pressed.'.format(key))
-
-
 def show_info(win, file_name, insert=''):
     """
     Clear way to show info message into screen.
+    :param insert:
+    :param file_name:
     :param win:
     :return:
     """
@@ -113,7 +90,7 @@ def abort_with_error(err):
 
 
 class StimAggregator(object):
-    def __init__(self, win, matrix, fig_scale=1.0, show_grid=False):
+    def __init__(self, win, matrix, fig_scale=1.0):
         self._stims_matrix = list()
         self._grid_matrix = list()
         self._items_names = list()
@@ -128,7 +105,7 @@ class StimAggregator(object):
         # Figure matrix must be centered.
         center_shift = (0.5 * VISUAL_OFFSET * fig_scale)  # shift to center of square
         width = self.width_offset * VISUAL_OFFSET * fig_scale + center_shift
-        height = self.height_offset * VISUAL_OFFSET * fig_scale + center_shift #+ HEIGHT_OFFSET
+        height = self.height_offset * VISUAL_OFFSET * fig_scale + center_shift
         for row in matrix:
             for item in row:
                 if isinstance(item, str):
@@ -215,7 +192,7 @@ class IntervalTimer(object):
 
 
 def main():
-    global PART_ID
+    global PART_ID, TRIGGER_LIST
     info = {'Part_id': '', 'Part_age': '20', 'Part_sex': ['MALE', "FEMALE"], 'ExpDate': '06.2016'}
     dict_dlg = gui.DlgFromDict(dictionary=info, title='PWPR', fixed=['ExpDate'])
     if not dict_dlg.OK:
@@ -237,6 +214,12 @@ def main():
                                  height=TEXT_SIZE, wrapWidth=TEXT_SIZE * 50)
 
     fixation_cross = visual.TextStim(win, text='+', color='black', height=2 * TEXT_SIZE)
+
+    trigger_no = 0
+
+    # ophthalmic procedure
+    if OPHTHALMIC_PROCEDURE:
+        trigger_no, TRIGGER_LIST = ophthalmic_procedure(win, SCREEN_RES, frame_rate, trigger_no, TRIGGER_LIST)
 
     # answers
     answers_list_greek = ["g{}.png".format(x) for x in greek]
