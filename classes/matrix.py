@@ -40,7 +40,7 @@ class Matrix:
                 fig_list = [(x, y) for x, y in figure_list if 0 <= x < 5 and 0 <= y < 5]
 
             if not self.colors:
-                fig_list = [x for x in fig_list if x[1] == 15]
+                fig_list = [x for x in fig_list if x[1] == 1]
             elif not self.figure:
                 fig_list = [x for x in fig_list if x[0] == 3]
 

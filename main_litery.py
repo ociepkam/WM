@@ -30,9 +30,10 @@ RESULTS.append(
     ['NR', 'FTIME', 'MTIME', 'STIME', 'ELEMENTS', 'ALL', 'UNIQUE', 'FIGURE', 'COLORS', 'FEATURES',
      'FEEDB', 'WAIT', 'EXP', 'LAT', 'TRUE_ANS', 'ANS', 'ACC'])
 TRIGGER_LIST = []
-OPHTHALMIC_PROCEDURE = True
+OPHTHALMIC_PROCEDURE = False
 USE_EEG = True
 UN_CLICK = False
+END_AFTER_ANSWER = True
 
 
 class CaseInsensitiveDict(collections.Mapping):
@@ -276,10 +277,10 @@ def main():
             if trial['EXP'] == 'experiment':
                 TRIGGER_LIST.append((str(trigger_no), "WAIT_" + str(trial['elements'])))
 
-            for _ in range(int(0.5 * frame_rate)):  # fixation cross
-                fixation_cross.draw()
-                check_exit()
-                win.flip()
+            # for _ in range(int(0.5 * frame_rate)):  # fixation cross
+            #     fixation_cross.draw()
+            #     check_exit()
+            #     win.flip()
 
             # First matrix
             if trial['EXP'] == 'experiment':
@@ -307,9 +308,12 @@ def main():
             event.Mouse(visible=True, newPos=None, win=win)
             answers_greek.setAutoDrawStims(True)
             pressed = False
+
+            jitter = random.choice(range(0, int(frame_rate / 2))) / float(frame_rate)
             if trial['EXP'] == 'experiment':
                 trigger_no = send_trigger_eeg(trigger_no, EEG)
-            for _ in range(int(float(trial['STIME']) * frame_rate)):  # show original matrix
+
+            for _ in range(int(float(trial['STIME'] + jitter) * frame_rate)):  # show original matrix
                 if mouse.getPressed()[0] == 0:
                     pressed = False
                 if not pressed:
@@ -321,6 +325,9 @@ def main():
                             elif UN_CLICK:
                                 answers_greek.changeDrawGridElem(pos)
                             pressed = True
+
+                if len(answers_greek.get_marked_items_names()) == len(trial['TRUE_ANS']) and END_AFTER_ANSWER:
+                    break
 
                 check_exit()
                 win.flip()

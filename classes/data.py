@@ -1,3 +1,2 @@
-figure_list = [(x, y) for x in range(17, 26) for y in range(15, 16)]
-#figure_list = [(4, y) for y in range(17, 26)]
+figure_list = [(x, y) for x in [10, 17, 18, 20, 21, 22, 23, 24, 25] for y in range(1, 2)]
 greek = range(5, 14)
