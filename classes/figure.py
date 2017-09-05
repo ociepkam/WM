@@ -63,7 +63,7 @@ class Figure:
 
     def info(self):
         try:
-            return str(self.parameters[0]) + '_' + str(self.parameters[1]) + '.png'
+            return str(self.parameters[0]) + '_' + str(self.parameters[1]) + 'a.png'
         except:
             return 'g' + str(self.parameters) + '.png'
 

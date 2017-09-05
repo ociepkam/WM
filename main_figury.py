@@ -22,8 +22,8 @@ from misc.screen_misc import get_screen_res, get_frame_rate
 
 # GLOBALS
 TEXT_SIZE = 30
-VISUAL_OFFSET = 90
-FIGURES_SCALE = 0.5
+VISUAL_OFFSET = 100
+FIGURES_SCALE = 0.4
 HEIGHT_OFFSET = 1.0 * VISUAL_OFFSET
 RESULTS = list()
 RESULTS.append(
@@ -216,7 +216,7 @@ def main():
     next_trial = visual.TextStim(win, text=u'Naci\u015Bnij spacj\u0119 aby kontynuowa\u0107', color='black',
                                  height=TEXT_SIZE, wrapWidth=TEXT_SIZE * 50)
 
-    fixation_cross = visual.TextStim(win, text='+', color='black', height=2 * TEXT_SIZE)
+    fixation_cross = visual.TextStim(win, text='+', color='black', height=5 * TEXT_SIZE)
 
     # EEG
     trigger_no = 1
@@ -237,7 +237,7 @@ def main():
                                                         port_eeg=EEG, text_color='black')
 
     # answers
-    answers_list_figure = ["{}_{}.png".format(x, y) for x, y in figure]
+    answers_list_figure = ["{}_{}a.png".format(x, y) for x, y in figure]
 
     problem_number = 0
     for block in data['list_of_blocks']:
@@ -273,6 +273,7 @@ def main():
                 # jitter = int(frame_rate)
                 # jitter = random.choice(range(-jitter, jitter))
                 for _ in range(int((float(trial['WAIT']) * frame_rate))):  # + jitter)):  # show break
+                    fixation_cross.draw()
                     check_exit()
                     win.flip()
             if trial['EXP'] == 'experiment':
