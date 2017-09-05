@@ -259,8 +259,9 @@ def main():
             answers_greek = StimAggregator(win, answers_list_greek, fig_scale=FIGURES_SCALE)
 
             sqrt_len = int(sqrt(len(trial['matrix'])))
-            mask = visual.Rect(win, fillColor='black', lineColor='black', size=FIGURES_SCALE * 180 * sqrt_len)
-
+            # mask = visual.Rect(win, fillColor='black', lineColor='black', size=FIGURES_SCALE * 180 * sqrt_len)
+            mask = visual.ImageStim(win=win, image=join('mask.png'), interpolate=True,
+                                    size=FIGURES_SCALE * 90 * sqrt_len, )
             # blank
             if trial['EXP'] == 'experiment':
                 trigger_no = send_trigger_eeg(trigger_no, EEG)
@@ -309,11 +310,10 @@ def main():
             answers_greek.setAutoDrawStims(True)
             pressed = False
 
-            jitter = random.choice(range(0, int(frame_rate / 2))) / float(frame_rate)
             if trial['EXP'] == 'experiment':
                 trigger_no = send_trigger_eeg(trigger_no, EEG)
 
-            for _ in range(int(float(trial['STIME'] + jitter) * frame_rate)):  # show original matrix
+            for _ in range(int(float(trial['STIME']) * frame_rate)):  # show original matrix
                 if mouse.getPressed()[0] == 0:
                     pressed = False
                 if not pressed:
@@ -326,15 +326,19 @@ def main():
                                 answers_greek.changeDrawGridElem(pos)
                             pressed = True
 
+                check_exit()
+                win.flip()
+
                 if len(answers_greek.get_marked_items_names()) == len(trial['TRUE_ANS']) and END_AFTER_ANSWER:
                     break
 
-                check_exit()
-                win.flip()
             if trial['EXP'] == 'experiment':
                 TRIGGER_LIST.append((str(trigger_no), "SM_" + str(trial['elements'])))
 
             trial['ANS'] = answers_greek.get_marked_items_names()
+
+            jitter = random.choice(range(0, int(frame_rate / 2))) / float(frame_rate)
+            core.wait(jitter)
 
             event.Mouse(visible=False, newPos=None, win=win)
             answers_greek.setAutoDrawStims(False)
