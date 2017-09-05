@@ -50,13 +50,27 @@ class Matrix:
         for _ in range(self.size):
             self.matrix.append(None)
         for _ in range(elements):
-            # if elements <= 9:
-            #    self.add_figure("small")
-            # else:
-            #    self.add_figure("big")
-            self.add_figure("big")
+            self.add_figure()
 
-    def add_figure(self, size):
+    def find_free(self):
+        free = []
+        for i in range(self.size):
+            if self.matrix[i] is None:
+                free.append(i)
+        if self.size == 9:
+            regions_list = [[4], [1, 3, 5, 7]]
+        elif self.size == 16:
+            regions_list = [[5, 6, 9, 10], [1, 2], [4, 8], [7, 11], [13, 14]]
+        else:
+            return free
+
+        for region in regions_list:
+            if [elem for elem in free if elem in region]:
+                return [elem for elem in free if elem in region]
+
+        return free
+
+    def add_figure(self):
         if self.unique:
             if not self.possible_figures:
                 self.possible_figures = self.all_possible_figures
@@ -65,13 +79,7 @@ class Matrix:
         else:
             fig = random.choice(self.all_possible_figures)
 
-        free = []
-        for i in range(self.size):
-            if self.matrix[i] is None:
-                if size == 'big':
-                    free.append(i)
-                elif i in [6, 7, 8, 11, 12, 13, 16, 17, 18]:
-                    free.append(i)
+        free = self.find_free()
 
         self.matrix[random.choice(free)] = Figure(fig)
 
