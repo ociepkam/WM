@@ -81,7 +81,7 @@ def show_info(win, file_name, insert=''):
     msg = visual.TextStim(win, color='black', text=msg, height=TEXT_SIZE - 10, wrapWidth=SCREEN_RES['width'])
     msg.draw()
     win.flip()
-    key = event.waitKeys(keyList=['f7', 'return', 'space'])
+    key = event.waitKeys(keyList=['f7', 'return', 'space', 'left', 'right'])
     if key == ['f7']:
         abort_with_error('Experiment finished by user on info screen! F7 pressed.')
     win.flip()
